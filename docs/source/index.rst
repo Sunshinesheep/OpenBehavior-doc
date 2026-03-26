@@ -35,3 +35,5 @@ Contents
    :maxdepth: 2
    :caption: EXTENSION TO SIMULATIONS:
 
+   OpenBehavior_connected_to
+
