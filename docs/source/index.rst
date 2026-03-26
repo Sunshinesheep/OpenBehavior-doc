@@ -3,7 +3,7 @@ Welcome to OpenBehavior's documentation!
 
 Explore our guides and examples for using Openbehavior.
 
-Get started :doc:here'<Introduction_to_OpenBehavior>'
+Get started :doc:'here<Introduction_to_OpenBehavior>'
 
 .. note::
 
