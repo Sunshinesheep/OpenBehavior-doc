@@ -17,7 +17,7 @@ Contents
    :caption: GETTING STARTED:
 
    Introduction_to_OpenBehavior
-   Install_OpenBehavior
+   getting_started
    OpenBehavior_example
 
 .. toctree::
