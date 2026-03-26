@@ -17,7 +17,6 @@ Contents
 --------
 
 .. toctree::
-
    :maxdepth: 2
    :caption: GETTING STARTED:
 
@@ -26,14 +25,12 @@ Contents
    OpenBehavior_example.rst
 
 .. toctree::
-
    :maxdepth: 2
-   :caption: LANGUAGE DESCRIPITON:
+   :caption: LANGUAGE DESCRIPTION:
 
    Types.rst
 
 .. toctree::
-
    :maxdepth: 2
    :caption: EXTENSION TO SIMULATIONS:
 
