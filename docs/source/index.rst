@@ -19,7 +19,19 @@ Contents
 .. toctree::
 
    :maxdepth: 2
-   :caption: Contents:
+   :caption: GETTING STARTED:
 
-   GETTING STARTED/index
-   
+   Introduction_to_OpenBehavior.rst
+   Install_OpenBehavior.rst
+   OpenBehavior_example.rst
+
+.. toctree::
+
+   :maxdepth: 2
+   :caption: LANGUAGE DESCRIPITON:
+
+.. toctree::
+
+   :maxdepth: 2
+   :caption: EXTENSION TO SIMULATIONS:
+
