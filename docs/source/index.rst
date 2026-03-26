@@ -30,6 +30,8 @@ Contents
    :maxdepth: 2
    :caption: LANGUAGE DESCRIPITON:
 
+   Types.rst
+
 .. toctree::
 
    :maxdepth: 2
