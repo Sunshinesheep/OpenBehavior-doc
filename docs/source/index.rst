@@ -16,15 +16,16 @@ Contents
    :maxdepth: 2
    :caption: GETTING STARTED:
 
-   Introduction_to_OpenBehavior.rst
-   Install_OpenBehavior.rst
-   OpenBehavior_example.rst
+   Introduction_to_OpenBehavior
+   Install_OpenBehavior
+   OpenBehavior_example
 
 .. toctree::
    :maxdepth: 2
    :caption: LANGUAGE DESCRIPTION:
 
    Types.rst
+   generate_scenarios_by_openbehavior
 
 .. toctree::
    :maxdepth: 2
