@@ -1,3 +1,4 @@
+# How to start
 ## 🚀 Getting Started
 This section describes the required environment setup and the steps to reproduce our experimental results.
 

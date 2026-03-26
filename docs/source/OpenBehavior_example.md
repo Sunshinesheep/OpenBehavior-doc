@@ -1,1 +1,1 @@
-# OpenBehavior_example
+# OpenBehavior example
