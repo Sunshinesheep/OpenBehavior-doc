@@ -4,7 +4,7 @@
 
 In our desgin, a scenario is composed of six elements: **EgoVehicle** **NPCVehicles** **map** **scenario mode**
 
- **environment **  **behavior model** .We are going to explore it in this part.
+ **environment**  **behavior model** .We are going to explore it in this part.
 
 ### Ego Vehicle
 
