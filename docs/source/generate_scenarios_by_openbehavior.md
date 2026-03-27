@@ -65,7 +65,12 @@ user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "avunit_s8")
 Related Examples:
 
 ```
-
+environment: Environment
+#environment.clouds(8)
+#environment.air(80)
+#environment.rain(20mmph)
+#environment.wind(40mps)
+#environment.fog(5m)
 ```
 
 
