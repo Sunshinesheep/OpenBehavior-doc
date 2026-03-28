@@ -9,13 +9,13 @@ A **Scene** $\theta$ is a snapshot at a specific time instant that captures the 
 
 | Component | Formalism | Description |
 | :--- | :--- | :--- |
-| **Map** | $$ \theta(\mathit{map}) $$ | The static road network configuration. |
-| **Timestamp** | $$\theta(\mathit{time}) \in \mathbb{R}_{\ge 0}$$ | The continuous simulation time. |
-| **Environment** | $$\theta(\mathit{env})$$ | Contextual conditions (e.g., weather, lighting). |
-| **Ego State** | $$\theta(\mathit{ego})$$ | Physical state of the Ego vehicle. |
-| **Agent States** | $$\theta(\mathit{agents})$$ | States of all NPCs, pedestrians, and obstacles. |
-| **Active Phase** | $$\theta(\mathit{phase})$$ | The currently executing orchestration phase $P$. |
-| **Active Binding** | $$\theta(\mathit{binding})$$ | The mapping of agents to their active Behavior Profiles $\langle \mathcal{M}, \mathcal{L} \rangle$. |
+| **Map** | ![](images/map.png) | The static road network configuration. |
+| **Timestamp** | ![](images/time.png) | The continuous simulation time. |
+| **Environment** | ![](images/env.png) | Contextual conditions (e.g., weather, lighting). |
+| **Ego State** | ![](images/ego.png) | Physical state of the Ego vehicle. |
+| **Agent States** | ![](images/agents.png)  | States of all NPCs, pedestrians, and obstacles. |
+| **Active Phase** | ![](images/phase.png) | The currently executing orchestration phase $P$. |
+| **Active Binding** | ![](images/binding.png) | The mapping of agents to their active Behavior Profiles $\langle \mathcal{M}, \mathcal{L} \rangle$. |
 
 
 ---
