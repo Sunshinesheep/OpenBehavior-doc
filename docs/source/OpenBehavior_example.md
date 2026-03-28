@@ -3,6 +3,15 @@ In this section, we will provide a few complete examples of OpenBehavior.
 
 ## S3-Lane Following on a Straight Road
 
+### Overview
+This example demonstrates a standard multi-vehicle interaction on a highway-style straight road. The key highlight here is the **heterogeneous behavior control**:
+1. **The Ego Vehicle** follows a specific path with a "cautious" driving style.
+2. **Standard NPCs** (npc1, npc2, npc3) use rule-based "normal" models with randomized spatial ranges to ensure scenario diversity.
+3. **Adaptive NPC** (npc4) utilizes our **Behavioral Model Binding** mechanism, which dynamically switches its driving profile based on the `scenario_mode`.
+
+### Scenario Script
+The main script orchestrates the orchestration block. It defines the map, initializes actors, and executes a 40-second parallel simulation where each agent fulfills its bound Behavior Profile.
+
 ### Scenario Script
     import openbehavior_basic.osc
     import adaptive.osc
