@@ -7,15 +7,7 @@ OpenBehavior describes a complete scenario execution. Its semantics are defined 
 ## 1. Scene Definition ($\theta$)
 A **Scene** $\theta$ is a snapshot at a specific time instant that captures the state of both the physical world and the orchestration logic.
 
-| Component | Formalism | Description |
-| :--- | :--- | :--- |
-| **Map** | ![](images/map.png) | The static road network configuration. |
-| **Timestamp** | ![](images/time.png) | The continuous simulation time. |
-| **Environment** | ![](images/env.png) | Contextual conditions (e.g., weather, lighting). |
-| **Ego State** | ![](images/ego.png) | Physical state of the Ego vehicle. |
-| **Agent States** | ![](images/agents.png)  | States of all NPCs, pedestrians, and obstacles. |
-| **Active Phase** | ![](images/phase.png) | The currently executing orchestration phase $P$. |
-| **Active Binding** | ![](images/binding.png) | The mapping of agents to their active Behavior Profiles $\langle \mathcal{M}, \mathcal{L} \rangle$. |
+![table](images/table.png)
 
 
 ---
