@@ -54,3 +54,9 @@ source_parsers = {
 }
 
 source_suffix = ['.rst', '.md']
+
+mathjax3_config = {
+    'tex': {
+        'packages': ['base', 'ams', 'nobold', 'newcommand', 'stmaryrd']
+    }
+}
