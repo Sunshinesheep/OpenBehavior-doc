@@ -22,6 +22,11 @@ extensions = [
     'sphinx.ext.mathjax'
 ]
 
+myst_enable_extensions = [
+    "dollarmath",   # 支持 $...$ 和 $$...$$
+    "amsmath",      # 支持 \begin{align} 等
+]
+
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/master/', None),

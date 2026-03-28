@@ -6,6 +6,7 @@ Explore our guides and examples for using Openbehavior.
 .. figure:: images/tool.png
    :align: center
 
+   System Architecture of OpenBehavior Framework
 
 Tool-Independence Architecture
 -----------------------------
