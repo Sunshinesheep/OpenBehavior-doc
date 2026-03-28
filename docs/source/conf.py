@@ -54,12 +54,3 @@ source_parsers = {
 }
 
 source_suffix = ['.rst', '.md']
-
-mathjax_config = {
-    "TeX": {
-        "Macros": {
-            "llbracket": ["\\left[\\!\\left[ #1 \\right]\\!\\right]", 1],
-            "rrbracket": ["\\right]\\!\\right]", 0],
-        }
-    }
-}
