@@ -216,7 +216,14 @@ struct adapt_npc_bm:
             }
 ```
 
+
+### Scenario Illustrations
+
+![s3](/images/s3.png)
+
+
 ### openbehavior_basic.osc
+The detail openbehavior_basic.osc is as follows:
 
 ```
 # tag::library-physical-time[]
@@ -270,6 +277,3 @@ actor Carlacola
 
 ```
 
-### Scenario Illustrations
-
-![s3](/images/s3.png)
