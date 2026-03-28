@@ -1,0 +1,3 @@
+# Tool-independent
+
+“Tool-independence” means the language layer’s (OpenBehavior/OBSpec) decoupling from simulator- and ADS-specific implementations. The parser generates a structured scenario configuration from the language, which can then be instantiated on other simulation platforms via lightweight adapters. In our paper, we utilize CARLA + Apollo as an example, which is challenging and representative, requiring only two adapters to map language constructs to simulator and ADS APIs, without modifying the core engine. 

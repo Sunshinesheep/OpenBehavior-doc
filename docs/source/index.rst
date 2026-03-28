@@ -17,6 +17,7 @@ Contents
    :caption: GETTING STARTED:
 
    Introduction_to_OpenBehavior
+   tool-inde
    getting_started
    OpenBehavior_example
 
