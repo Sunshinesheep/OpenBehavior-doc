@@ -31,7 +31,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
     
         do parallel(duration: 40s):
             ego_vehicle.drive(path) with:
-                set_behavior_model(behavior_type: Script, model: cautious, hyperparameters: Default)
+                set_behavior_model(behavior_type: Learing_based, model: Apollo, hyperparameters: Default)
                 set_behavior_logic(
                     lane:"2, at:start",
                     position:"0, at:start",
@@ -39,7 +39,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
                     position:"150, at:end"
                 )
             npc1.drive(path) with:
-                set_behavior_model(behavior_type: Script, model:normal, hyperparameters: Default)
+                set_behavior_model(behavior_type: Script, model:behavior_agent, hyperparameters: Default)
                 set_behavior_logic(
                     lane:"[1..4], at:start",
                     position:"[-20..30], ahead_of:ego_vehicle, at:start",
@@ -47,7 +47,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
                     position:"[-20..30], ahead_of:ego_vehicle, at:end"
                 )
             npc2.drive(path) with:
-                set_behavior_model(behavior_type: Script, model:normal, hyperparameters: Default)
+                set_behavior_model(behavior_type: Script, model:behavior_agent, hyperparameters: Default)
                 set_behavior_logic(
                     lane:"[1..4], at:start",
                     position:"[-20..30], behind:ego_vehicle, at:start",
@@ -55,7 +55,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
                     position:"[-20..30], ahead_of:ego_vehicle, at:end"
                 )
             npc3.drive(path) with:
-                set_behavior_model(behavior_type: Script, model:normal, hyperparameters: Default)
+                set_behavior_model(behavior_type: Script, model:behavior_agent, hyperparameters: Default)
                 set_behavior_logic(
                     lane:"[1..4], at:start",
                     position:"[-20..30], behind:ego_vehicle, at:start",
@@ -160,7 +160,7 @@ struct adapt_npc_bm:
             },
             {
                 model = {
-                    model_name: "adv_ai_agent",
+                    model_name: "NAG-RL_agent",
                     behavior_type: "AI",
                     hyperparameters: {
                         max_acc: 5,
@@ -181,7 +181,7 @@ struct adapt_npc_bm:
             {
                 model = {
                     model_name: "normal",
-                    behavior_type: "Script",
+                    behavior_type: "behavior_agent",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -198,7 +198,7 @@ struct adapt_npc_bm:
             },
             {
                 model = {
-                    model_name: "adv_ai_agent",
+                    model_name: "NAG-RL_agent",
                     behavior_type: "AI",
                     hyperparameters: {
                         max_acc: 5,
