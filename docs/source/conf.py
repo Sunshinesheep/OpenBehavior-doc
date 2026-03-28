@@ -19,6 +19,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'recommonmark',
     'sphinx_markdown_tables',
+    'sphinx.ext.mathjax'
 ]
 
 intersphinx_mapping = {
