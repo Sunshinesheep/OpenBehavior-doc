@@ -350,23 +350,23 @@ struct adapt_npc_bm:
 ### openbehavior_basic.osc
 
 ```
-# tag::library-physical-time[]
+#tag::library-physical-time[]
 type time is SI(s: 1)
 unit s           of time is SI(s: 1, factor: 1)
 unit hour        of time is SI(s: 1, factor: 3600)
 unit h           of time is SI(s: 1, factor: 3600)
 unit minute      of time is SI(s: 1, factor: 60)
 unit min         of time is SI(s: 1, factor: 60)
-# end::library-physical-time[]
+#end::library-physical-time[]
 
-# tag::library-physical-length[]
+#tag::library-physical-length[]
 type length is SI(m: 1)
 unit m          of length is SI(m: 1, factor: 1)
 unit meter      of length is SI(m: 1, factor: 1)
 unit km         of length is SI(m: 1, factor: 1000)
-# end::library-physical-length[]
+#end::library-physical-length[]
 
-# tag::library-physical-velocity[]
+#tag::library-physical-velocity[]
 type velocity is SI(m: 1, s: -1)
 unit meter_per_second    of velocity is SI(m: 1, s: -1, factor: 1)
 unit mps                 of velocity is SI(m: 1, s: -1, factor: 1)
@@ -378,15 +378,15 @@ unit mph                 of velocity is SI(m: 1, s: -1, factor: 0.447038889)
 unit miph                of velocity is SI(m: 1, s: -1, factor: 0.447038889)
 unit mmph                of velocity is SI(m: 1, s: -1, factor: 0.000000278)
 unit millimeter_per_hour of velocity is SI(m: 1, s: -1, factor: 0.000000278)
-# end::library-physical-velocity[]
+#end::library-physical-velocity[]
 
-# tag::library-physical-angle[]
+#tag::library-physical-angle[]
 type angle is SI(rad: 1)
 unit degree of angle is SI(rad: 1, factor: 0.01745329252)
 unit deg    of angle is SI(rad: 1, factor: 0.01745329252)
 unit radian of angle is SI(rad: 1, factor: 1)
 unit rad    of angle is SI(rad: 1, factor: 1)
-# end::library-physical-angle[]
+#end::library-physical-angle[]
 
 actor dut
 actor Path
