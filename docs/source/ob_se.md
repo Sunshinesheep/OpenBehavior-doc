@@ -9,7 +9,7 @@ A **Scene** $\theta$ is a snapshot at a specific time instant that captures the 
 
 | Component | Formalism | Description |
 | :--- | :--- | :--- |
-| **Map** | :math:`\theta(\mathit{map})` | The static road network configuration. |
+| **Map** | $$ \theta(\mathit{map}) $$ | The static road network configuration. |
 | **Timestamp** | $$\theta(\mathit{time}) \in \mathbb{R}_{\ge 0}$$ | The continuous simulation time. |
 | **Environment** | $$\theta(\mathit{env})$$ | Contextual conditions (e.g., weather, lighting). |
 | **Ego State** | $$\theta(\mathit{ego})$$ | Physical state of the Ego vehicle. |
@@ -17,48 +17,6 @@ A **Scene** $\theta$ is a snapshot at a specific time instant that captures the 
 | **Active Phase** | $$\theta(\mathit{phase})$$ | The currently executing orchestration phase $P$. |
 | **Active Binding** | $$\theta(\mathit{binding})$$ | The mapping of agents to their active Behavior Profiles $\langle \mathcal{M}, \mathcal{L} \rangle$. |
 
-<table>
-  <tr>
-    <th>Component</th>
-    <th>Formalism</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><strong>Map</strong></td>
-    <td>\(\theta(\mathit{map})\)</td>
-    <td>The static road network configuration.</td>
-  </tr>
-  <tr>
-    <td><strong>Timestamp</strong></td>
-    <td>\(\theta(\mathit{time}) \in \mathbb{R}_{\ge 0}\)</td>
-    <td>The continuous simulation time.</td>
-  </tr>
-  <tr>
-    <td><strong>Environment</strong></td>
-    <td>\(\theta(\mathit{env})\)</td>
-    <td>Contextual conditions (e.g., weather, lighting).</td>
-  </tr>
-  <tr>
-    <td><strong>Ego State</strong></td>
-    <td>\(\theta(\mathit{ego})\)</td>
-    <td>Physical state of the Ego vehicle.</td>
-  </tr>
-  <tr>
-    <td><strong>Agent States</strong></td>
-    <td>\(\theta(\mathit{agents})\)</td>
-    <td>States of all NPCs, pedestrians, and obstacles.</td>
-  </tr>
-  <tr>
-    <td><strong>Active Phase</strong></td>
-    <td>\(\theta(\mathit{phase})\)</td>
-    <td>The currently executing orchestration phase \(P\).</td>
-  </tr>
-  <tr>
-    <td><strong>Active Binding</strong></td>
-    <td>\(\theta(\mathit{binding})\)</td>
-    <td>The mapping of agents to their active Behavior Profiles \(\langle \mathcal{M}, \mathcal{L} \rangle\).</td>
-  </tr>
-</table>
 
 ---
 
