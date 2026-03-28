@@ -351,7 +351,7 @@ struct adapt_npc_bm:
 ### openbehavior_basic.osc
 
 ```
-#tag::library-physical-time[]
+# tag::library-physical-time[]
 type time is SI(s: 1)
 unit s           of time is SI(s: 1, factor: 1)
 unit hour        of time is SI(s: 1, factor: 3600)
