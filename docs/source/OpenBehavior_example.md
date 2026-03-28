@@ -28,7 +28,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
         npc4: TT
     
         adaptive_targets: list of string = [npc4]
-        user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "avunit_s8")
+        user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_s1")
     
         do parallel(duration: 40s):
             ego_vehicle.drive(path) with:
@@ -139,7 +139,7 @@ struct adapt_npc_bm:
             }
         }
 
-    elif scenario_mode == "avunit_s4":
+    elif scenario_mode == "openbehavior_s4":
         choose:
             {
                 model = {
@@ -177,7 +177,7 @@ struct adapt_npc_bm:
                     }
                 }
             }
-    elif scenario_mode == "avunit_s1":
+    elif scenario_mode == "openbehavior_s1":
         choose:
             {
                 model = {
