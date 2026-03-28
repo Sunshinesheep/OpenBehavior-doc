@@ -47,7 +47,7 @@ Related Examples:
 
 ```
 adaptive_targets: list of string = [npc4]
-user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "avunit_s8")
+user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_s1")
 ```
 
 ### Environment
