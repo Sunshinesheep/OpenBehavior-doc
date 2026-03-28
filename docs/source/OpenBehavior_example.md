@@ -4,7 +4,7 @@ In this section, we will provide a few complete examples of OpenBehavior.
 ## S3-Lane Following on a Straight Road
 
 ### Scenario Script
-    import avunit_basic.osc
+    import openbehavior_basic.osc
     import adaptive.osc
     
     scenario top:
@@ -55,6 +55,212 @@ In this section, we will provide a few complete examples of OpenBehavior.
                     position:"[-20..30], ahead_of:ego_vehicle, at:end"
                 )
             auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
+
+### adaptive.osc
+
+```
+struct adapt_npc_bm:
+    def adapt(scenario_mode: string) is
+    if scenario_mode == "natural":
+        model = {
+            model_name: "normal",
+            behavior_type: "Script",
+            hyperparameters: {
+                max_acc: 5
+            }
+        }
+        logic={
+            logic_params: {
+                lane: "3, at:start",
+                position: "[1..20], behind: ego_vehicle, at:start",
+                lane: "1, side_of: ego_vehicle, side: right, at:end",
+                position: "[50..70], ahead_of: ego_vehicle, at:end"
+            }
+        }
+    elif scenario_mode == "diverse":
+        choose:
+            {
+                model = {
+                    model_name: "normal",
+                    behavior_type: "Script",
+                    hyperparameters: {
+                        max_acc: 5,
+                        max_speed: 20
+                    }
+                }
+                logic = {
+                    logic_params: {
+                        lane: "3, at:start",
+                        position: "[1..100], behind: ego_vehicle, at:start",
+                        lane: "1, at:end",
+                        position: "[30..70], ahead_of: ego_vehicle, at:end"
+                    }
+                }
+            },
+            {
+                model = {
+                    model_name: "cautious",
+                    behavior_type: "Script",
+                    hyperparameters: {
+                        max_acc: 5,
+                        max_speed: 20
+                    }
+                }
+                logic = {
+                    logic_params: {
+                        lane: "3, at:start",
+                        position: "[1..100], ahead_of: ego_vehicle, at:start",
+                        lane: "1, at:end",
+                        position: "[30..70], ahead_of: ego_vehicle, at:end"
+                    }
+                }
+            }
+    elif scenario_mode == "adversarial":
+        model= {
+            model_name: "aggressive",
+            behavior_type: "Script",
+            hyperparameters: "default"
+        }
+        logic= {
+            logic_params: {
+                lane: "3, at:start",
+                position: "[60..80m], behind: ego_vehicle, at:start",
+                lane: "1, at:end",
+                position: "[50..80m], ahead_of: ego_vehicle, at:end"
+            }
+        }
+
+    elif scenario_mode == "avunit_s4":
+        choose:
+            {
+                model = {
+                    model_name: "normal",
+                    behavior_type: "Script",
+                    hyperparameters: {
+                        max_acc: 5,
+                        max_speed: 20
+                    }
+                }
+                logic = {
+                    logic_params: {
+                        lane:"[2..4], at:start",
+                        position:"[5..20], ahead_of:ego_vehicle, at:start",
+                        lane:"2, at:end",
+                        position:"[-20..30], ahead_of:ego_vehicle, at:end"
+                    }
+                }
+            },
+            {
+                model = {
+                    model_name: "adv_ai_agent",
+                    behavior_type: "AI",
+                    hyperparameters: {
+                        max_acc: 5,
+                        max_speed: 20
+                    }
+                }
+                logic = {
+                    logic_params: {
+                        lane:"[2..4], at:start",
+                        position:"[5..20], ahead_of:ego_vehicle, at:start",
+                        lane:"2, at:end",
+                        position:"[-20..30], ahead_of:ego_vehicle, at:end"
+                    }
+                }
+            }
+    elif scenario_mode == "avunit_s1":
+        choose:
+            {
+                model = {
+                    model_name: "normal",
+                    behavior_type: "Script",
+                    hyperparameters: {
+                        max_acc: 5,
+                        max_speed: 20
+                    }
+                }
+                logic = {
+                    logic_params: {
+                        lane:"[3..5], at:start",
+                        position:"[90..100], ahead_of:ego_vehicle, at:start",
+                        lane:"3, at:end",
+                        position:"[50..80], ahead_of:ego_vehicle, at:end"
+                    }
+                }
+            },
+            {
+                model = {
+                    model_name: "adv_ai_agent",
+                    behavior_type: "AI",
+                    hyperparameters: {
+                        max_acc: 5,
+                        max_speed: 20
+                    }
+                }
+                logic = {
+                    logic_params: {
+                        lane:"[3..5], at:start",
+                        position:"[90..100], ahead_of:ego_vehicle, at:start",
+                        lane:"3, at:end",
+                        position:"[50..80], ahead_of:ego_vehicle, at:end"
+                    }
+                }
+            }
+```
+
+### openbehavior_basic.osc
+
+```
+# tag::library-physical-time[]
+type time is SI(s: 1)
+unit s           of time is SI(s: 1, factor: 1)
+unit hour        of time is SI(s: 1, factor: 3600)
+unit h           of time is SI(s: 1, factor: 3600)
+unit minute      of time is SI(s: 1, factor: 60)
+unit min         of time is SI(s: 1, factor: 60)
+# end::library-physical-time[]
+
+# tag::library-physical-length[]
+type length is SI(m: 1)
+unit m          of length is SI(m: 1, factor: 1)
+unit meter      of length is SI(m: 1, factor: 1)
+unit km         of length is SI(m: 1, factor: 1000)
+# end::library-physical-length[]
+
+# tag::library-physical-velocity[]
+type velocity is SI(m: 1, s: -1)
+unit meter_per_second    of velocity is SI(m: 1, s: -1, factor: 1)
+unit mps                 of velocity is SI(m: 1, s: -1, factor: 1)
+unit kilometer_per_hour  of velocity is SI(m: 1, s: -1, factor: 0.277777778)
+unit kmph                of velocity is SI(m: 1, s: -1, factor: 0.277777778)
+unit kph                 of velocity is SI(m: 1, s: -1, factor: 0.277777778)
+unit mile_per_hour       of velocity is SI(m: 1, s: -1, factor: 0.447038889)
+unit mph                 of velocity is SI(m: 1, s: -1, factor: 0.447038889)
+unit miph                of velocity is SI(m: 1, s: -1, factor: 0.447038889)
+unit mmph                of velocity is SI(m: 1, s: -1, factor: 0.000000278)
+unit millimeter_per_hour of velocity is SI(m: 1, s: -1, factor: 0.000000278)
+# end::library-physical-velocity[]
+
+# tag::library-physical-angle[]
+type angle is SI(rad: 1)
+unit degree of angle is SI(rad: 1, factor: 0.01745329252)
+unit deg    of angle is SI(rad: 1, factor: 0.01745329252)
+unit radian of angle is SI(rad: 1, factor: 1)
+unit rad    of angle is SI(rad: 1, factor: 1)
+# end::library-physical-angle[]
+
+actor dut
+actor Path
+modifier Path.set_map
+modifier Path.path_min_driving_lanes
+actor Model3
+actor Rubicon
+actor Walker02
+actor TT
+actor A2
+actor Carlacola
+
+```
 
 ### Scenario Illustrations
 
