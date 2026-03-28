@@ -183,14 +183,18 @@ Notice the use of **General Modifiers** within the `logic_params`:
 In your main scenario file, you can simply "Batch Bind" these behaviors to multiple NPCs using the `auto_orchestrates_behavior` primitive:
 
 ```python
-# 1. Select the mode
-current_mode: string = "openbehavior_s4"
+# 1. target agents
+adaptive_targets: list of string = [npc4]
 
 # 2. Resolve the profile
-resolved_profile = adapt_npc_bm.adapt(scenario_mode: current_mode)
+user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_s1")
 
 # 3. Apply to a group of agents
-auto_orchestrates_behavior(resolved_profile, [npc1, npc2, npc3])
+auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
+
+
+        
+        
 
 ```
 
