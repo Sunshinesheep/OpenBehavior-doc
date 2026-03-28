@@ -69,7 +69,45 @@ The main script orchestrates the orchestration block. It defines the map, initia
 ```
 struct adapt_npc_bm:
     def adapt(scenario_mode: string) is
-    if scenario_mode == "natural":
+     if scenario_mode == "openbehavior_s1":
+        choose:
+            {
+                model = {
+                    model_name: "normal",
+                    behavior_type: "behavior_agent",
+                    hyperparameters: {
+                        max_acc: 5,
+                        max_speed: 20
+                    }
+                }
+                logic = {
+                    logic_params: {
+                        lane:"[3..5], at:start",
+                        position:"[90..100], ahead_of:ego_vehicle, at:start",
+                        lane:"3, at:end",
+                        position:"[50..80], ahead_of:ego_vehicle, at:end"
+                    }
+                }
+            },
+            {
+                model = {
+                    model_name: "NAG-RL_agent",
+                    behavior_type: "AI",
+                    hyperparameters: {
+                        max_acc: 5,
+                        max_speed: 20
+                    }
+                }
+                logic = {
+                    logic_params: {
+                        lane:"[3..5], at:start",
+                        position:"[90..100], ahead_of:ego_vehicle, at:start",
+                        lane:"3, at:end",
+                        position:"[50..80], ahead_of:ego_vehicle, at:end"
+                    }
+                }
+            }
+    elif scenario_mode == "natural":
         model = {
             model_name: "normal",
             behavior_type: "Script",
@@ -173,44 +211,6 @@ struct adapt_npc_bm:
                         position:"[5..20], ahead_of:ego_vehicle, at:start",
                         lane:"2, at:end",
                         position:"[-20..30], ahead_of:ego_vehicle, at:end"
-                    }
-                }
-            }
-    elif scenario_mode == "openbehavior_s1":
-        choose:
-            {
-                model = {
-                    model_name: "normal",
-                    behavior_type: "behavior_agent",
-                    hyperparameters: {
-                        max_acc: 5,
-                        max_speed: 20
-                    }
-                }
-                logic = {
-                    logic_params: {
-                        lane:"[3..5], at:start",
-                        position:"[90..100], ahead_of:ego_vehicle, at:start",
-                        lane:"3, at:end",
-                        position:"[50..80], ahead_of:ego_vehicle, at:end"
-                    }
-                }
-            },
-            {
-                model = {
-                    model_name: "NAG-RL_agent",
-                    behavior_type: "AI",
-                    hyperparameters: {
-                        max_acc: 5,
-                        max_speed: 20
-                    }
-                }
-                logic = {
-                    logic_params: {
-                        lane:"[3..5], at:start",
-                        position:"[90..100], ahead_of:ego_vehicle, at:start",
-                        lane:"3, at:end",
-                        position:"[50..80], ahead_of:ego_vehicle, at:end"
                     }
                 }
             }
