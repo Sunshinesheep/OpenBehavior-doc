@@ -3,6 +3,10 @@ Welcome to OpenBehavior's documentation!
 
 Explore our guides and examples for using Openbehavior.
 
+.. figure:: images/tool.png
+   :width: 400px
+   :align: center
+
 Get started :doc:`here <Introduction_to_OpenBehavior>`
 
 .. note::
