@@ -192,6 +192,7 @@ resolved_profile = adapt_npc_bm.adapt(scenario_mode: current_mode)
 auto_orchestrates_behavior(resolved_profile, [npc1, npc2, npc3])
 
 ```
+
 ```
 struct adapt_npc_bm:
     def adapt(scenario_mode: string) is
@@ -341,7 +342,6 @@ struct adapt_npc_bm:
                 }
             }
 ```
-
 
 ### Scenario Illustrations
 
