@@ -64,8 +64,11 @@ The main script orchestrates the orchestration block. It defines the map, initia
                 )
             auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
 
-### adaptive.osc
+### `adaptive.osc`: The Behavior Library
 
+The `adaptive.osc` file serves as the "Behavioral Brain" of the OpenBehavior framework. It defines a reusable **Behavior Profile Library** that fundamentally decouples an agent's driving policy (**Model**) from its specific tactical objectives (**Logic**) within a scenario.
+
+Through the `adapt` function, this script dynamically resolves agent configurations based on the provided `scenario_mode` (e.g., `"adversarial"` or `"natural"`). By utilizing the **`choose` keyword**, it introduces **non-deterministic selection**, allowing the framework to switch between different model engines—such as a simple rule-based script or a complex `NAG-RL` AI model—while maintaining the same logical intent. This mechanism significantly enhances the diversity and coverage of test scenarios without requiring changes to the core scenario description.
 ```
 struct adapt_npc_bm:
     def adapt(scenario_mode: string) is
