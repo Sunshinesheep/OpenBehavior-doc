@@ -12,7 +12,6 @@ This example demonstrates a standard multi-vehicle interaction on a highway-styl
 ### Scenario Script
 The main script orchestrates the orchestration block. It defines the map, initializes actors, and executes a 40-second parallel simulation where each agent fulfills its bound Behavior Profile.
 
-### Scenario Script
     import openbehavior_basic.osc
     import adaptive.osc
     
