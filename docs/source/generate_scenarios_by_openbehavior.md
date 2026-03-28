@@ -111,6 +111,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
     
         adaptive_targets: list of string = [npc4]
         user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_s1")
+        auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
     
         do parallel(duration: 40s):
             ego_vehicle.drive(path) with:
@@ -145,7 +146,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
                     lane:"[1..4], at:end",
                     position:"[-20..30], ahead_of:ego_vehicle, at:end"
                 )
-            auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
+            
 
 ### adaptive.osc
 #### Understanding `adaptive.osc`: The Behavior Library
