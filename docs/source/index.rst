@@ -105,6 +105,7 @@ Contents
    :caption: LANGUAGE DESCRIPTION:
 
    Types
+   obspec
    generate_scenarios_by_openbehavior
    semantics_of_describing_scenes
    define_specifications_by_OpenBehavior
