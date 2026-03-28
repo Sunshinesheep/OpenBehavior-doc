@@ -147,7 +147,8 @@ The main script orchestrates the orchestration block. It defines the map, initia
                 )
             auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
 
-### 🧩 Understanding `adaptive.osc`: The Behavior Library
+### adaptive.osc
+#### Understanding `adaptive.osc`: The Behavior Library
 
 The `adaptive.osc` file is the "Behavioral Brain" of the OpenBehavior framework. It defines a reusable **Behavior Profile Library** that decouples an agent's driving policy from the specific scenario context.
 
