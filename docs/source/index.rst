@@ -105,12 +105,11 @@ Contents
    :maxdepth: 2
    :caption: LANGUAGE DESCRIPTION:
 
-   obspec
    ob_se
+   obspec
    obspec_bnf
    Types
    generate_scenarios_by_openbehavior
-   semantics_of_describing_scenes
    define_specifications_by_OpenBehavior
    semantics_of_describing_specifications
    overall_BNF
