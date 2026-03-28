@@ -5,7 +5,7 @@ Explore our guides and examples for using Openbehavior.
 
 .. figure:: images/tool.png
    :align: center
-   
+
 
 Tool-Independence Architecture
 -----------------------------
@@ -46,7 +46,43 @@ As shown in the architecture diagram:
 - The resulting **robustness** values are fed back into the **Orchestration Algorithm**.
 - The algorithm then optimizes the next iteration of scenario parameters to effectively expose safety violations.
 
+💡 Addressing Scenario Complexity and Human Effort
+------------------------------------------------
+
+A common inquiry regarding Domain-Specific Languages (DSLs) for autonomous driving is whether the effectiveness of scenario generation stems from the **language's design** or the **author's expertise**.
+
+Our evaluation demonstrates that **OpenBehavior** significantly reduces the dependency on expert intervention through three key architectural advantages:
+
+1. High-Level Abstraction vs. Low-Level Scripting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+While complex scenarios *can* be hard-coded in simulators like CARLA or via Apollo's APIs, doing so requires deep knowledge of underlying middleware (e.g., ROS, Cyber RT).
+
+- **OpenBehavior** abstracts these into logical primitives.
+- **The Result:** Users focus on *what* the scenario should achieve (e.g., "cut-in with specific lateral velocity"), while the framework handles the *how* (API calls, sync, and initialization).
+
+2. Systematic Search Space vs. Manual Tuning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ability to expose safety violations in our experiments is not a result of "trial and error" by authors, but rather the **Orchestration Algorithm** navigating a formal search space defined by the language.
+
+- **OpenBehavior** allows users to define **Logical Scenarios** with parameter ranges.
+- The framework then automatically performs **fuzzing and optimization** to find the "edge cases" within those ranges—tasks that are practically impossible to perform manually with consistent results.
+
+3. Quantitative Evidence of Expressiveness
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To objectively assess the language beyond individual expertise, we emphasize its **Expressiveness**:
+
+- **Complexity Handling:** OpenBehavior supports multi-agent synchronized behaviors and reactive triggers (e.g., "IF ADS accelerates, THEN Agent B swerves"), which are traditionally difficult to synchronize manually.
+- **Oracle Integration:** By decoupling the **STL (Signal Temporal Logic) Oracle**, the language ensures that safety requirements are formally verified, removing the subjectivity of "what counts as a violation."
+
+.. important::
+
+   **Summary:** The success of the evaluation is a testament to the language’s ability to **systematize and automate** the search for complex safety-critical scenarios, effectively "distilling" expert knowledge into reusable, machine-executable templates.
+
 Get started :doc:`here <Introduction_to_OpenBehavior>`
+------------------------------------------------------
 
 .. note::
 
