@@ -57,6 +57,9 @@ source_suffix = ['.rst', '.md']
 
 mathjax3_config = {
     'tex': {
-        'packages': ['base', 'ams', 'nobold', 'newcommand', 'stmaryrd']
+        'macros': {
+            'llbracket': ['\\lbrack\\!\\lbrack', 0],
+            'rrbracket': ['\\rbrack\\!\\rbrack', 0],
+        }
     }
 }
