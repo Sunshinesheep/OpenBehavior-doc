@@ -17,14 +17,14 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
-    'recommonmark',
+    'myst_parser',
     'sphinx_markdown_tables',
     'sphinx.ext.mathjax'
 ]
 
 myst_enable_extensions = [
-    "dollarmath",   # 支持 $...$ 和 $$...$$
-    "amsmath",      # 支持 \begin{align} 等
+    "dollarmath",
+    "amsmath",
 ]
 
 intersphinx_mapping = {
