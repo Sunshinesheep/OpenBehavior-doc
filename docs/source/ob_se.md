@@ -9,7 +9,7 @@ A **Scene** $\theta$ is a snapshot at a specific time instant that captures the 
 
 | Component | Formalism | Description |
 | :--- | :--- | :--- |
-| **Map** | \( \theta(\mathit{map}) \) | The static road network configuration. |
+| **Map** | $ \theta(\mathit{map}) $ | The static road network configuration. |
 | **Timestamp** | \(\theta(\mathit{time}) \in \mathbb{R}_{\ge 0}$\) | The continuous simulation time. |
 | **Environment** | \(\theta(\mathit{env})\) | Contextual conditions (e.g., weather, lighting). |
 | **Ego State** | \(\theta(\mathit{ego})\) | Physical state of the Ego vehicle. |
