@@ -45,7 +45,7 @@ Transitions between phases occur based on the following rules for a phase $P$ ac
     * If behavioral goals are achieved before $D$ elapses, agents enter a **maintenance state** (e.g., station-keeping) until the time limit is reached.
 2.  **Logic-Based Termination**:
     If no duration is specified, the phase terminates at the earliest step $m$ where all agents $\alpha \in \mathit{Agents}(P)$ satisfy their terminal constraints $C_{\mathit{end}}$:
-    $$\forall \alpha \in \mathit{Agents}(P), \theta_m \models C_{\mathit{end}}^{\alpha}$$
+    $\forall \alpha \in \mathit{Agents}(P), \theta_m \models C_{\mathit{end}}^{\alpha}$
 
 ---
 
