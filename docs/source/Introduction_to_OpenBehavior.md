@@ -44,4 +44,4 @@ OpenBehavior combines **adaptive behavior models** and **OBSpec-guided search** 
 
 *Note:* ✓ Supported; × Not supported; p Partially supported. 
 
-While conventional languages excel at defining physical parameter variations, OpenBehavior extends these capabilities by introducing a novel policy-level abstraction. By decoupling agents from specific behavior models and introducing Intent Oracles, it enables the simulation of complex, reactive interactions. This approach explores both physical and behavioral search spaces, significantly expanding the coverage of safety-critical edge cases.
+While conventional languages excel at defining physical parameter variations, OpenBehavior shifts the paradigm by introducing a novel policy-level abstraction. By decoupling agents from specific behavior models and introducing Intent Oracles, it enables the simulation of complex, reactive interactions. This approach explores both physical and behavioral search spaces, significantly expanding the coverage of safety-critical edge cases.
