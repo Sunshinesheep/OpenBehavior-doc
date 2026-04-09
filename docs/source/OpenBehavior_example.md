@@ -10,7 +10,7 @@ This example illustrates a lane-swap interaction on a three-lane highway. The eg
 * **Npc2 & Npc3**: Originating from **Lane 3**, they attempt to merge into **Lane 2** ahead of the ego vehicle. Their decision-making is governed by the `Scenario Mode` configuration.
 
 ### Scenario Illustration
-![Highway Lane Swap Interaction](/images/example.png)
+![Highway Lane Swap Interaction](images/example.png)
 
 
 ### Scenario Script
