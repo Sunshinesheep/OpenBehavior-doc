@@ -2,7 +2,7 @@
 
 ## Describe a Scenario
 
-In our desgin, a scenario is composed of six elements: **EgoVehicle** **NPCVehicles** **map** **scenario mode**
+In our design, a scenario is composed of six elements: **EgoVehicle** **NPCVehicles** **map** **scenario mode**
 
  **environment**  **behavior model** .We are going to explore it in this part.
 
@@ -160,7 +160,7 @@ In OpenBehavior, an agent's behavior is defined as a tuple $\mathcal{P} = \langl
 
 ---
 
-#### Key Features in this Script:
+#### Key Features in the Script
 
 ##### 1. Scenario Mode Mapping
 The `adapt` function acts as a **Behavioral Switchboard**. By passing a `scenario_mode` string (e.g., `"adversarial"`, `"natural"`, or `"diverse"`), the framework automatically resolves the complex internal configurations for all targeted agents.
