@@ -25,23 +25,7 @@ Basic functions of OpenBehavior:
 
 OpenBehavior combines **adaptive behavior models** and **OBSpec-guided search** to explore diverse, safety-critical scenarios.
 
-### Feature Comparison Table
-
-| Category | Capability | AVUnit | Scenic | OpenScenario | GeoScenario | M-SDL | **OpenBehavior (Ours)** |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Static Scene & Format** | File Format | Script | Script | XML | XML | Script | **Script** |
-| | Weather | ✓ | × | ✓ | ✓ | ✓ | **✓** |
-| | Agent position | ✓ | ✓ | ✓ | p | ✓ | **✓** |
-| | Agent heading | ✓ | ✓ | ✓ | ✓ | ✓ | **✓** |
-| **Dynamic Behavior Modeling** | Behavior Representation | Trajectory Only | Heuristic Rules | Trajectory / Path | Path Following | Rule-based | **Hybrid (Rule + Learning)** |
-| | Modifier Scope | Uniform | Uniform | Uniform | Uniform | Uniform | **Model-Aware (General / Internal)** |
-| | Runtime Behavior Switching | × | × | × | × | × | **✓ (Mode-based)** |
-| **Scenario Structure & Management** | Modularity (Behavior vs. Agent) | Coupled | Coupled | Coupled | Coupled | Coupled | **Decoupled** |
-| | Search Space Definition | Physical Only | Physical / Spatial | Physical Only | Physical Only | Physical Only | **Physical + Behavioral** |
-| | Variation Support | Parameter | Probabilistic | Parameter | Parameter | Parameter | **Mode-Based Binding** |
-| **Oracles** | Safety Constraints | ✓ | × | × | × | ✓ | **✓** |
-| | Behavioral Objectives | × | × | × | × | × | **✓** |
-
-*Note:* ✓ Supported; × Not supported; p Partially supported. 
+#### Feature Comparison Table
+![Comparison Table](images/compare.png)
 
 While conventional languages excel at defining physical parameter variations, OpenBehavior shifts the paradigm by introducing a novel policy-level abstraction. By decoupling agents from specific behavior models and introducing Intent Oracles, it enables the simulation of complex, reactive interactions. This approach explores both physical and behavioral search spaces, significantly expanding the coverage of safety-critical edge cases.
