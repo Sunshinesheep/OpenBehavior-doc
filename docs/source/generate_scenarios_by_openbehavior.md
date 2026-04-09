@@ -192,11 +192,12 @@ user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_
 # 3. Apply to a group of agents
 auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
 
-
-        
-        
-
 ```
+##### 🌟 Why Use Adaptive Behavior Binding?
+
+The `adapt_npc_bm` library streamlines the complexity of scenario creation by abstracting individual NPC configurations into high-level **Scenario Modes**. Instead of manually defining parameters for every vehicle, you can use the `auto_orchestrates_behavior` primitive to batch-bind sophisticated, context-aware behaviors to a group of agents. This approach reduces boilerplate code, allowing you to transform the entire environment's traffic dynamics by changing a single parameter.
+
+Users can switch between different behavior models and parameter sets by simply changing the `scenario_mode`. This avoids manual configuration for each individual NPC:
 
 ```
 struct adapt_npc_bm:
