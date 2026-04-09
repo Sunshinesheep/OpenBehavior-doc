@@ -76,8 +76,8 @@ struct adapt_npc_bm:
         choose:
             {
                 model = {
-                    model_name: "normal",
-                    behavior_type: "behavior_agent",
+                    model_name: "normal_behavior_agent",
+                    behavior_type: "Rule",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -95,7 +95,7 @@ struct adapt_npc_bm:
             {
                 model = {
                     model_name: "NAG-RL_agent",
-                    behavior_type: "AI",
+                    behavior_type: "Learning",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -112,8 +112,8 @@ struct adapt_npc_bm:
             }
     elif scenario_mode == "natural":
         model = {
-            model_name: "normal",
-            behavior_type: "Script",
+            model_name: "normal_behavior_agent",
+            behavior_type: "Rule",
             hyperparameters: {
                 max_acc: 5
             }
@@ -130,8 +130,8 @@ struct adapt_npc_bm:
         choose:
             {
                 model = {
-                    model_name: "normal",
-                    behavior_type: "Script",
+                    model_name: "normal_behavior_agent",
+                    behavior_type: "Rule",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -148,8 +148,8 @@ struct adapt_npc_bm:
             },
             {
                 model = {
-                    model_name: "cautious",
-                    behavior_type: "Script",
+                    model_name: "cautious_behavior_agent",
+                    behavior_type: "Rule",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -166,8 +166,8 @@ struct adapt_npc_bm:
             }
     elif scenario_mode == "adversarial":
         model= {
-            model_name: "aggressive",
-            behavior_type: "Script",
+            model_name: "aggressive_behavior_agent",
+            behavior_type: "Rule",
             hyperparameters: "default"
         }
         logic= {
@@ -183,8 +183,8 @@ struct adapt_npc_bm:
         choose:
             {
                 model = {
-                    model_name: "normal",
-                    behavior_type: "Script",
+                    model_name: "normal_behavior_agent",
+                    behavior_type: "Rule",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -202,7 +202,7 @@ struct adapt_npc_bm:
             {
                 model = {
                     model_name: "NAG-RL_agent",
-                    behavior_type: "AI",
+                    behavior_type: "Learning",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
