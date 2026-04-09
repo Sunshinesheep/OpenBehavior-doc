@@ -84,7 +84,7 @@ npc3.drive(path) with:
 
 
 
-## S3-Lane Following on a Straight Road
+## Example: Lane Following on a Straight Road
 
 ### Overview
 This example demonstrates a standard multi-vehicle interaction on a highway-style straight road. The key highlight here is the **heterogeneous behavior control**:
