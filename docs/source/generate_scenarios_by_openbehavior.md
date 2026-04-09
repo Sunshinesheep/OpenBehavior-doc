@@ -58,11 +58,11 @@ Related Examples:
 
 ```
 environment: Environment
-#environment.clouds(8)
-#environment.air(80)
-#environment.rain(20mmph)
-#environment.wind(40mps)
-#environment.fog(5m)
+environment.clouds(8)
+environment.air(80)
+environment.rain(20mmph)
+environment.wind(40mps)
+environment.fog(5m)
 ```
 
 ### Behavior model
