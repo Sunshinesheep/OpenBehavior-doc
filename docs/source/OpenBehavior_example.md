@@ -9,7 +9,7 @@ This example illustrates a lane-swap interaction on a three-lane highway. The eg
 * **Npc1**: Starts in **Lane 2**, executes a forced lane change to **Lane 1**, then continues autonomously using a learning-based model.
 * **Npc2 & Npc3**: Originating from **Lane 3**, they attempt to merge into **Lane 2** ahead of the ego vehicle. Their decision-making is governed by the `Scenario Mode` configuration.
 
-### Scenario Illustration
+#### Scenario Illustration
 ![Highway Lane Swap Interaction](images/example.png)
 
 
