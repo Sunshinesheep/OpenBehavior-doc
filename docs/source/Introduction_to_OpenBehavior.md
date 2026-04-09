@@ -25,7 +25,7 @@ Basic functions of OpenBehavior:
 
 OpenBehavior combines **adaptive behavior models** and **OBSpec-guided search** to explore diverse, safety-critical scenarios.
 
-#### Feature Comparison Table
+##### Feature Comparison Table
 ![Comparison Table](images/compare.png)
 
 While conventional languages excel at defining physical parameter variations, OpenBehavior shifts the paradigm by introducing a novel policy-level abstraction. By decoupling agents from specific behavior models and introducing Intent Oracles, it enables the simulation of complex, reactive interactions. This approach explores both physical and behavioral search spaces, significantly expanding the coverage of safety-critical edge cases.
