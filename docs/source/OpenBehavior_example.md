@@ -70,7 +70,6 @@ struct adapt_npc_bm:
     def adapt(scenario_mode: string) is
         if scenario_mode == "mode_1":
             choose:
-                # Configuration A: Learning-based NAG-RL Agent
                 {
                     model = {
                         model_name: "NAG-RL_agent",
@@ -86,7 +85,6 @@ struct adapt_npc_bm:
                         }
                     }
                 },
-                # Configuration B: Rule-based Behavior Agent
                 {
                     model = {
                         model_name: "behavior_agent",
