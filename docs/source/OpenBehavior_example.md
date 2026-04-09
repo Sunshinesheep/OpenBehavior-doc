@@ -1,151 +1,110 @@
 # OpenBehavior example
 In this section, we will provide a few complete examples of OpenBehavior.
 
-## S3-Lane Following on a Straight Road
+## Example: Three-Lane Highway Interaction (Lane Swap)
 
 ### Overview
-This example demonstrates a standard multi-vehicle interaction on a highway-style straight road. The key highlight here is the **heterogeneous behavior control**:
-1. **The Ego Vehicle** follows a specific path with a "cautious" driving style.
-2. **Standard NPCs** (npc1, npc2, npc3) use rule-based "normal" models with randomized spatial ranges to ensure scenario diversity.
-3. **Adaptive NPC** (npc4) utilizes our **Behavioral Model Binding** mechanism, which dynamically switches its driving profile based on the `scenario_mode`.
+This example illustrates a lane-swap interaction on a three-lane highway. The ego vehicle starts in **Lane 1** and aims for **Lane 2**. 
+
+* **Npc1**: Starts in **Lane 2**, executes a forced lane change to **Lane 1**, then continues autonomously using a learning-based model.
+* **Npc2 & Npc3**: Originating from **Lane 3**, they attempt to merge into **Lane 2** ahead of the ego vehicle. Their decision-making is governed by the `Scenario Mode` configuration.
+
+### Scenario Illustration
+![Highway Lane Swap Interaction](/images/example.png)
+
 
 ### Scenario Script
-The main script orchestrates the orchestration block. It defines the map, initializes actors, and executes a 40-second parallel simulation where each agent fulfills its bound Behavior Profile.
+The main script orchestrates the vehicles. It uses `parallel` for simultaneous actions and `serial` for Npc1's multi-stage maneuver.
 
-    import openbehavior_basic.osc
-    import adaptive.osc
+```python
+import openbehavior_basic.osc
+import adaptive.osc
+
+scenario top:
+    path: Path
+    path.set_map("Town06")
+    path.path_min_driving_lanes(3)
+
+    ego_vehicle: Model3
+    npc1: Rubicon
+    npc2: TT
+    npc3: A2
     
-    scenario top:
-        path: Path
-        path.set_map("Town04")
-        path.path_min_driving_lanes(2)
-    
-        ego_vehicle: Model3
-        npc1: Rubicon
-        npc2: TT
-        npc3: A2
-        npc4: TT
-    
-        adaptive_targets: list of string = [npc4]
-        user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_s1")
-    
-        do parallel(duration: 40s):
-            ego_vehicle.drive(path) with:
-                set_behavior_model(behavior_type: Learing_based, model: Apollo, hyperparameters: Default)
-                set_behavior_logic(
-                    lane:"2, at:start",
-                    position:"0, at:start",
-                    lane:"2, at:end",
-                    position:"150, at:end"
-                )
-            npc1.drive(path) with:
-                set_behavior_model(behavior_type: Script, model:behavior_agent, hyperparameters: Default)
-                set_behavior_logic(
-                    lane:"[1..4], at:start",
-                    position:"[-20..30], ahead_of:ego_vehicle, at:start",
-                    lane:"[1..4], at:end",
-                    position:"[-20..30], ahead_of:ego_vehicle, at:end"
-                )
-            npc2.drive(path) with:
-                set_behavior_model(behavior_type: Script, model:behavior_agent, hyperparameters: Default)
-                set_behavior_logic(
-                    lane:"[1..4], at:start",
-                    position:"[-20..30], behind:ego_vehicle, at:start",
-                    lane:"[1..4], at:end",
-                    position:"[-20..30], ahead_of:ego_vehicle, at:end"
-                )
-            npc3.drive(path) with:
-                set_behavior_model(behavior_type: Script, model:behavior_agent, hyperparameters: Default)
-                set_behavior_logic(
-                    lane:"[1..4], at:start",
-                    position:"[-20..30], behind:ego_vehicle, at:start",
-                    lane:"[1..4], at:end",
-                    position:"[-20..30], ahead_of:ego_vehicle, at:end"
-                )
-            auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
+    # Batch Bind behavioral configurations to Npc2 and Npc3
+    adaptive_targets: list of string = [npc2, npc3]
+    user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "mode_1")
+    auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
+
+    do parallel: 
+        # Ego Vehicle: Lane 1 -> Lane 2
+        ego_vehicle.drive(path) with:
+            set_behavior_model(behavior_type: Learning, model: Apollo, hyperparameters: default)
+            set_behavior_logic(
+                lane: "1, at:start", position: "80, at:start",
+                lane: "2, at:end", position: "260, at:end"
+            )
+
+        # Npc1: Initial Drive -> Lane Change -> Interaction
+        serial:
+            start: npc1.drive(path) with:
+                set_behavior_model(behavior_type: Learning, model: NAG-RL_agent)
+                set_behavior_logic(lane: "2, at:start", position: "0, at:start", lane: "2, at:end", position: "[100..120], at:end")
+
+            change_lane: parallel(duration: 5s):
+                npc1.drive(path) with:
+                    set_behavior_model(behavior_type: Rule, model: Directive, hyperparameters: "speed = 10")
+                    set_behavior_logic(change_lane(lane_changes: 1, side: left))
+
+            end: npc1.drive(path) with:
+                set_behavior_model(behavior_type: Learning, model: NAG-RL_agent)
+                set_behavior_logic(lane: "1, at:start", lane: "2, at:end", position: "10, ahead_of: ego_vehicle, at:end")
+```
 
 ### `adaptive.osc`: The Behavior Library
 
 The `adaptive.osc` file serves as the "Behavioral Brain" of the OpenBehavior framework. It defines a reusable **Behavior Profile Library** that fundamentally decouples an agent's driving policy (**Model**) from its specific tactical objectives (**Logic**) within a scenario.
 
-Through the `adapt` function, this script dynamically resolves agent configurations based on the provided `scenario_mode` (e.g., `"adversarial"` or `"natural"`). By utilizing the **`choose` keyword**, it introduces **non-deterministic selection**, allowing the framework to switch between different model engines—such as a simple rule-based script or a complex `NAG-RL` AI model—while maintaining the same logical intent. This mechanism significantly enhances the diversity and coverage of test scenarios without requiring changes to the core scenario description.
+Through the `adapt` function, this script dynamically resolves agent configurations based on the provided `scenario_mode` (e.g., `"mode_1"` or `"mode_2"`). By utilizing the **`choose` keyword**, it introduces **non-deterministic selection**, allowing the framework to switch between different behavior models—such as a simple rule-based script or a complex `NAG-RL` AI model—while maintaining the same logical intent. This mechanism significantly enhances the diversity and coverage of test scenarios without requiring changes to the core scenario description.
 ```
 struct adapt_npc_bm:
     def adapt(scenario_mode: string) is
-     if scenario_mode == "openbehavior_s1":
+        if scenario_mode == "mode_1":
+            choose:
+                # Configuration A: Learning-based NAG-RL Agent
+                {
+                    model = {
+                        model_name: "NAG-RL_agent",
+                        behavior_type: "Learning",
+                        hyperparameters: default
+                    }
+                    logic = {
+                        logic_params: {
+                            lane: "3, at:start",
+                            position: "[10..30], ahead_of: ego_vehicle, at:start",
+                            lane: "2, at:end",
+                            position: "[30..50], ahead_of: ego_vehicle, at:end"
+                        }
+                    }
+                },
+                # Configuration B: Rule-based Behavior Agent
+                {
+                    model = {
+                        model_name: "behavior_agent",
+                        behavior_type: "Rule",
+                        hyperparameters: default
+                    }
+                    logic = {
+                        logic_params: {
+                            lane: "3, at:start",
+                            position: "[10..40], ahead_of: ego_vehicle, at:start",
+                            lane: "2, at:end",
+                            position: "[30..40], ahead_of: ego_vehicle, at:end"
+                        }
+                    }
+                }
+
+    elif scenario_mode == "mode_2":
         choose:
-            {
-                model = {
-                    model_name: "normal_behavior_agent",
-                    behavior_type: "Rule",
-                    hyperparameters: {
-                        max_acc: 5,
-                        max_speed: 20
-                    }
-                }
-                logic = {
-                    logic_params: {
-                        lane:"[3..5], at:start",
-                        position:"[90..100], ahead_of:ego_vehicle, at:start",
-                        lane:"3, at:end",
-                        position:"[50..80], ahead_of:ego_vehicle, at:end"
-                    }
-                }
-            },
-            {
-                model = {
-                    model_name: "NAG-RL_agent",
-                    behavior_type: "Learning",
-                    hyperparameters: {
-                        max_acc: 5,
-                        max_speed: 20
-                    }
-                }
-                logic = {
-                    logic_params: {
-                        lane:"[3..5], at:start",
-                        position:"[90..100], ahead_of:ego_vehicle, at:start",
-                        lane:"3, at:end",
-                        position:"[50..80], ahead_of:ego_vehicle, at:end"
-                    }
-                }
-            }
-    elif scenario_mode == "natural":
-        model = {
-            model_name: "normal_behavior_agent",
-            behavior_type: "Rule",
-            hyperparameters: {
-                max_acc: 5
-            }
-        }
-        logic={
-            logic_params: {
-                lane: "3, at:start",
-                position: "[1..20], behind: ego_vehicle, at:start",
-                lane: "1, side_of: ego_vehicle, side: right, at:end",
-                position: "[50..70], ahead_of: ego_vehicle, at:end"
-            }
-        }
-    elif scenario_mode == "diverse":
-        choose:
-            {
-                model = {
-                    model_name: "normal_behavior_agent",
-                    behavior_type: "Rule",
-                    hyperparameters: {
-                        max_acc: 5,
-                        max_speed: 20
-                    }
-                }
-                logic = {
-                    logic_params: {
-                        lane: "3, at:start",
-                        position: "[1..100], behind: ego_vehicle, at:start",
-                        lane: "1, at:end",
-                        position: "[30..70], ahead_of: ego_vehicle, at:end"
-                    }
-                }
-            },
             {
                 model = {
                     model_name: "cautious_behavior_agent",
@@ -157,41 +116,6 @@ struct adapt_npc_bm:
                 }
                 logic = {
                     logic_params: {
-                        lane: "3, at:start",
-                        position: "[1..100], ahead_of: ego_vehicle, at:start",
-                        lane: "1, at:end",
-                        position: "[30..70], ahead_of: ego_vehicle, at:end"
-                    }
-                }
-            }
-    elif scenario_mode == "adversarial":
-        model= {
-            model_name: "aggressive_behavior_agent",
-            behavior_type: "Rule",
-            hyperparameters: "default"
-        }
-        logic= {
-            logic_params: {
-                lane: "3, at:start",
-                position: "[60..80m], behind: ego_vehicle, at:start",
-                lane: "1, at:end",
-                position: "[50..80m], ahead_of: ego_vehicle, at:end"
-            }
-        }
-
-    elif scenario_mode == "openbehavior_s4":
-        choose:
-            {
-                model = {
-                    model_name: "normal_behavior_agent",
-                    behavior_type: "Rule",
-                    hyperparameters: {
-                        max_acc: 5,
-                        max_speed: 20
-                    }
-                }
-                logic = {
-                    logic_params: {
                         lane:"[2..4], at:start",
                         position:"[5..20], ahead_of:ego_vehicle, at:start",
                         lane:"2, at:end",
@@ -218,11 +142,6 @@ struct adapt_npc_bm:
                 }
             }
 ```
-
-
-### Scenario Illustrations
-
-![s3](/images/s3.png)
 
 
 ### openbehavior_basic.osc
