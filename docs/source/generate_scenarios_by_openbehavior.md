@@ -408,6 +408,3 @@ actor Carlacola
 
 ```
 
-### Scenario Illustrations
-
-![s3](/images/s3.png)
