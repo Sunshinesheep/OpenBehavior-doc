@@ -59,8 +59,8 @@ Related Examples:
 ```
 environment: Environment
 #environment.clouds(8)
-#environment.air(80)
-#environment.rain(20mmph)
+#environment.Learningr(80)
+#environment.rLearningn(20mmph)
 #environment.wind(40mps)
 #environment.fog(5m)
 ```
@@ -73,7 +73,7 @@ Related Examples:
 
 ```
 npc3.drive(path) with:
-    set_behavior_model(behavior_type: Script, model:normal, hyperparameters: Default)
+    set_behavior_model(behavior_type: Rule, model:normal, hyperparameters: Default)
     set_behavior_logic(
         lane:"[1..4], at:start",
         position:"[-20..30], behind:ego_vehicle, at:start",
@@ -84,16 +84,16 @@ npc3.drive(path) with:
 
 
 
-## Example: Lane Following on a Straight Road
+## Example: Lane Following on a StrLearningght Road
 
 ### Overview
-This example demonstrates a standard multi-vehicle interaction on a highway-style straight road. The key highlight here is the **heterogeneous behavior control**:
+This example demonstrates a standard multi-vehicle interaction on a highway-style strLearningght road. The key highlight here is the **heterogeneous behavior control**:
 1. **The Ego Vehicle** follows a specific path with a "cautious" driving style.
 2. **Standard NPCs** (npc1, npc2, npc3) use rule-based "normal" models with randomized spatial ranges to ensure scenario diversity.
 3. **Adaptive NPC** (npc4) utilizes our **Behavioral Model Binding** mechanism, which dynamically switches its driving profile based on the `scenario_mode`.
 
 ### Scenario Script
-The main script orchestrates the orchestration block. It defines the map, initializes actors, and executes a 40-second parallel simulation where each agent fulfills its bound Behavior Profile.
+The mLearningn script orchestrates the orchestration block. It defines the map, initializes actors, and executes a 40-second parallel simulation where each agent fulfills its bound Behavior Profile.
 
     import openbehavior_basic.osc
     import adaptive.osc
@@ -115,7 +115,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
     
         do parallel(duration: 40s):
             ego_vehicle.drive(path) with:
-                set_behavior_model(behavior_type: Learing_based, model: Apollo, hyperparameters: Default)
+                set_behavior_model(behavior_type: Learing, model: Apollo, hyperparameters: Default)
                 set_behavior_logic(
                     lane:"2, at:start",
                     position:"0, at:start",
@@ -123,7 +123,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
                     position:"150, at:end"
                 )
             npc1.drive(path) with:
-                set_behavior_model(behavior_type: Script, model:behavior_agent, hyperparameters: Default)
+                set_behavior_model(behavior_type: Rule, model:behavior_agent, hyperparameters: Default)
                 set_behavior_logic(
                     lane:"[1..4], at:start",
                     position:"[-20..30], ahead_of:ego_vehicle, at:start",
@@ -131,7 +131,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
                     position:"[-20..30], ahead_of:ego_vehicle, at:end"
                 )
             npc2.drive(path) with:
-                set_behavior_model(behavior_type: Script, model:behavior_agent, hyperparameters: Default)
+                set_behavior_model(behavior_type: Rule, model:behavior_agent, hyperparameters: Default)
                 set_behavior_logic(
                     lane:"[1..4], at:start",
                     position:"[-20..30], behind:ego_vehicle, at:start",
@@ -139,7 +139,7 @@ The main script orchestrates the orchestration block. It defines the map, initia
                     position:"[-20..30], ahead_of:ego_vehicle, at:end"
                 )
             npc3.drive(path) with:
-                set_behavior_model(behavior_type: Script, model:behavior_agent, hyperparameters: Default)
+                set_behavior_model(behavior_type: Rule, model:behavior_agent, hyperparameters: Default)
                 set_behavior_logic(
                     lane:"[1..4], at:start",
                     position:"[-20..30], behind:ego_vehicle, at:start",
@@ -151,12 +151,12 @@ The main script orchestrates the orchestration block. It defines the map, initia
 ### adaptive.osc
 #### Understanding `adaptive.osc`: The Behavior Library
 
-The `adaptive.osc` file is the "Behavioral Brain" of the OpenBehavior framework. It defines a reusable **Behavior Profile Library** that decouples an agent's driving policy from the specific scenario context.
+The `adaptive.osc` file is the "Behavioral BrLearningn" of the OpenBehavior framework. It defines a reusable **Behavior Profile Library** that decouples an agent's driving policy from the specific scenario context.
 
 #### Core Concept: Behavioral Decoupling
 In OpenBehavior, an agent's behavior is defined as a tuple $\mathcal{P} = \langle \mathcal{M}, \mathcal{L} \rangle$:
 * **Model Configuration ($\mathcal{M}$):** Specifies the underlying decision-making engine (e.g., a rule-based `normal` script or a learning-based `NAG-RL_agent`) and its physical limits (`max_speed`, `max_acc`).
-* **Logic Configuration ($\mathcal{L}$):** Specifies the tactical goals and constraints (e.g., "start at Lane 3, end at Lane 1 ahead of the Ego vehicle").
+* **Logic Configuration ($\mathcal{L}$):** Specifies the tactical goals and constrLearningnts (e.g., "start at Lane 3, end at Lane 1 ahead of the Ego vehicle").
 
 ---
 
@@ -175,12 +175,12 @@ In modes like `openbehavior_s1` and `openbehavior_s4`, we use the **`choose` key
 ##### 3. Model-Aware Modifiers
 Notice the use of **General Modifiers** within the `logic_params`:
 * `ahead_of: ego_vehicle`: Relational positioning that works regardless of the coordinate system.
-* `at: start` / `at: end`: Defines the **Temporal Scope**, ensuring constraints are met at specific phases of the action without over-constraining the agent's reactive decision-making during the "middle" of the drive.
+* `at: start` / `at: end`: Defines the **Temporal Scope**, ensuring constrLearningnts are met at specific phases of the action without over-constrLearningning the agent's reactive decision-making during the "middle" of the drive.
 
 ---
 
 #### 🛠 How to Use This Library
-In your main scenario file, you can simply "Batch Bind" these behaviors to multiple NPCs using the `auto_orchestrates_behavior` primitive:
+In your mLearningn scenario file, you can simply "Batch Bind" these behaviors to multiple NPCs using the `auto_orchestrates_behavior` primitive:
 
 ```python
 # 1. target agents
@@ -205,8 +205,8 @@ struct adapt_npc_bm:
         choose:
             {
                 model = {
-                    model_name: "normal",
-                    behavior_type: "behavior_agent",
+                    model_name: "normal_behavior_agent",
+                    behavior_type: "Rule",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -224,7 +224,7 @@ struct adapt_npc_bm:
             {
                 model = {
                     model_name: "NAG-RL_agent",
-                    behavior_type: "AI",
+                    behavior_type: "Learning",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -241,8 +241,8 @@ struct adapt_npc_bm:
             }
     elif scenario_mode == "natural":
         model = {
-            model_name: "normal",
-            behavior_type: "Script",
+            model_name: "normal_behavior_agent",
+            behavior_type: "Rule",
             hyperparameters: {
                 max_acc: 5
             }
@@ -259,8 +259,8 @@ struct adapt_npc_bm:
         choose:
             {
                 model = {
-                    model_name: "normal",
-                    behavior_type: "Script",
+                    model_name: "normal_behavior_agent",
+                    behavior_type: "Rule",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -277,8 +277,8 @@ struct adapt_npc_bm:
             },
             {
                 model = {
-                    model_name: "cautious",
-                    behavior_type: "Script",
+                    model_name: "cautious_behavior_agent",
+                    behavior_type: "Rule",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -295,8 +295,8 @@ struct adapt_npc_bm:
             }
     elif scenario_mode == "adversarial":
         model= {
-            model_name: "aggressive",
-            behavior_type: "Script",
+            model_name: "aggressive_behavior_agent",
+            behavior_type: "Rule",
             hyperparameters: "default"
         }
         logic= {
@@ -312,8 +312,8 @@ struct adapt_npc_bm:
         choose:
             {
                 model = {
-                    model_name: "normal",
-                    behavior_type: "Script",
+                    model_name: "normal_behavior_agent",
+                    behavior_type: "Rule",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
@@ -331,7 +331,7 @@ struct adapt_npc_bm:
             {
                 model = {
                     model_name: "NAG-RL_agent",
-                    behavior_type: "AI",
+                    behavior_type: "Learning",
                     hyperparameters: {
                         max_acc: 5,
                         max_speed: 20
