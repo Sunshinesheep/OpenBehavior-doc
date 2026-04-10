@@ -16,7 +16,7 @@ A **Scene** $\theta$ is a snapshot at a specific time instant that captures the 
 A scenario specification defines a *space* of possible traces. A concrete trace $\pi$ must resolve all nondeterministic elements at initialization ($\theta_0$):
 
 * **Behavior Binding**: For agents using the `choose` construct, one option $o$ is selected at $\theta_0$ and remains fixed: 
-    $$\forall i \in [0, n], \theta_i(\mathit{binding}) = \theta_0(\mathit{binding})$$
+    $\forall i \in [0, n], \theta_i(\mathit{binding}) = \theta_0(\mathit{binding})$
 * **Parameter Concretization**: Any range parameters (e.g., `speed: [10..30]`) are instantiated to a specific scalar $v \in [10, 30]$ at the start of the trace.
 
 ---
