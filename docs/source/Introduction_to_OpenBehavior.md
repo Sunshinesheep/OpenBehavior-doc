@@ -2,34 +2,35 @@
 
 ## What is OpenBehavior?
 
-OpenBehavior is a behavior-based language for validating ADS in complex interaction scenarios. OpenBehavior integrates behavior models and a model-binding mechanism that enables users to bind agents with different decision policies within a scenario.
+OpenBehavior is a behavior-centric scenario description language for testing autonomous driving systems (ADSs). It enables users to describe traffic scenarios with heterogeneous behavior models, allowing traffic participants to exhibit adaptive and interactive driving behaviors instead of following predefined motion scripts.
 
 ## Why do we need OpenBehavior?
 
-The safety of ADSs fundamentally depends on their capability to handle complex multi-agent interactions. Critical scenarios,such as cut-ins or chain-reaction braking, emerge from dynamic  and autonomous interactions rather than static replays. However, most existing DSLs describe scenarios using predefined behavior scripts, where agent behaviors are largely fixed once the scenario starts.
+The safety of ADSs fundamentally depends on their ability to handle complex multi-agent interactions. Critical scenarios, such as cut-ins or chain-reaction braking, emerge from dynamic and autonomous interactions rather than static replays. However, most existing scenario description languages describe agent behaviors using predefined scripts, where traffic participants follow fixed motions or event-triggered actions once a scenario starts.
 
-This observation motivates the introduction of behavior models into scenario generation. Unlike fixed scripts that execute without considering interaction context, behavior models equip agents with reactive decision-making capabilities. Agents can continuously adjust their actions based on their surroundings.
+These limitations motivate the introduction of behavior models into scenario descriptions. Unlike predefined scripts, behavior models equip traffic participants with reactive decision-making capabilities, enabling them to continuously adapt their actions according to surrounding traffic conditions.
 
 ## What can you do with OpenBehavior?
 
-Basic functions of OpenBehavior:
+With OpenBehavior, you can:
 
-- Describe Different Scenes
-- Provides a unified scenario description by combining a scenario script with a set of behavior models
-- Build an adaptive orchestration algorithm that guides scenario generation toward users’ specified design intents while efficiently exploring critical system failures
-- Find "bugs" of ADSs
-- Connect to different simulators and autonomous driving systems (ADSs) for evaluation of different ADSs
-- Participate in the development process of ADSs
+- Describe diverse traffic scenarios using a behavior-centric language.
+- Bind heterogeneous behavior models to traffic participants.
+- Specify high-level testing intents using OBSpec.
+- Generate diverse and interactive scenarios through adaptive orchestration.
+- Evaluate autonomous driving systems (ADSs) in different simulation environments.
+- Discover safety-critical failures caused by complex traffic interactions.
 
 ## Comparison with Other Languages
 
-OpenBehavior combines **adaptive behavior models** and **OBSpec-guided search** to explore diverse, safety-critical scenarios.
+OpenBehavior extends conventional scenario description languages by introducing adaptive behavior models and intent-guided scenario generation, enabling richer interactions and more effective exploration of safety-critical scenarios.
 
-##### Feature Comparison Table
+### Feature Comparison
+
 <!--![Comparison Table](images/compare.png)-->
 ```{image} images/compare.png
 :width: 500px
 :align: left
 :alt: Comparison Table
 
-While conventional languages excel at defining physical parameter variations, OpenBehavior shifts the paradigm by introducing a novel policy-level abstraction. By decoupling agents from specific behavior models and introducing Intent Oracles, it enables the simulation of complex, reactive interactions. This approach explores both physical and behavioral search spaces, significantly expanding the coverage of safety-critical edge cases.
+Unlike existing scenario description languages, which rely on predefined trajectories or event-triggered actions, OpenBehavior introduces explicit behavior models that can be independently bound, switched, and reused across scenarios. Combined with model-aware modifiers and OBSpec, it supports both physical and behavioral variations, enabling richer scenario generation for testing.
