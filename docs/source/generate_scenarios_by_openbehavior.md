@@ -354,6 +354,7 @@ struct adapt_npc_bm:
 ![s3](/images/s3.png)
 
 
+.. _label-name: openbehavior_basic.osc
 ### openbehavior_basic.osc
 
 ```
