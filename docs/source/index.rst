@@ -42,12 +42,6 @@ Contents
    obspec_bnf
    obspec
 
-.. toctree::
-   :maxdepth: 2
-   :caption: EXECUTION BACKENDS:
-
-   OpenBehavior_connected_to
-
 .. note::
 
    OpenBehavior is under active development. We welcome feedback and contributions from the community.
