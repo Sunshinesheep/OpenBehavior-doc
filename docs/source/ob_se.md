@@ -12,7 +12,7 @@ A **Scene** $\theta$ is a snapshot at a specific time instant that captures the 
 
 ---
 
-## 2. Nondeterministic Resolution & Consistency
+## 2. Initialization
 A scenario specification defines a *space* of possible traces. A concrete trace $\pi$ must resolve all nondeterministic elements at initialization ($\theta_0$):
 
 * **Behavior Binding**: For agents using the `choose` construct, one option $o$ is selected at $\theta_0$ and remains fixed: 
@@ -49,7 +49,7 @@ Transitions between phases occur based on the following rules for a phase $P$ ac
 
 ---
 
-## 5. Global Lifecycle & Feasibility
+## 5. Global Termination & Feasibility
 The simulation must adhere to high-level constraints:
 
 * **Ego-Dominated Termination**: The entire trace $\pi$ terminates at $\theta_n$ if and only if the Ego vehicle reaches its destination or a critical system termination is triggered (e.g., `GlobalTerm(\theta_n) = True`).
