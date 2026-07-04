@@ -48,6 +48,12 @@ Contents
 
    OpenBehavior_connected_to
 
+.. toctree::
+   :maxdepth: 2
+   :caption: EXAMPLES:
+
+   OpenBehavior_example_highway_lane_change
+
 .. note::
 
    OpenBehavior is under active development. We welcome feedback and contributions from the community.
