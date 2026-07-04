@@ -31,7 +31,6 @@ Existing scenario description languages primarily focus on describing physical s
 :alt: Comparison Table
 ```
 
-
 Unlike existing scenario description languages, which rely on predefined trajectories or event-triggered actions, OpenBehavior introduces explicit behavior models that can be independently bound, switched, and reused across scenarios. Combined with model-aware modifiers and OBSpec, it supports both physical and behavioral variations, enabling richer scenario generation for testing.
 
 ## Next Steps
