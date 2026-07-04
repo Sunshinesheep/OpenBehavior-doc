@@ -1,42 +1,72 @@
-# Generate Scenarios by OpenBehavior
-
 ## Describe a Scenario
 
-In our design, a scenario is composed of six elements: **EgoVehicle** **NPCVehicles** **map** **scenario mode**
+In OpenBehavior, a scenario is organized into three core components:
 
- **environment**  **behavior model** .We are going to explore it in this part.
+- **Global Configuration**
+- **Agent Definition**
+- **Orchestration**
 
-### Ego Vehicle
+This separation cleanly decouples environment specification, agent modeling, and execution control, enabling modular and reusable scenario construction.
 
-**Ego Vehicle**: The ego vehicle is the autonomous vehicle targeted for testing.
+---
 
-Related Examples:
+### Global Configuration
+
+Global configuration defines the static and environmental context of a scenario, including the map and environmental conditions.
+
+#### Map
+
+The map specifies the driving environment where the scenario takes place.
+
+Related example:
+
+```
+path: Path
+path.set_map("Town04")
+```
+
+---
+
+#### Environment
+
+The environment defines dynamic conditions such as weather and visibility.
+
+Related example:
+
+```
+environment: Environment
+environment.clouds(8)
+environment.air(80)
+environment.rain(20mmph)
+environment.wind(40mps)
+environment.fog(5m)
+```
+
+
+---
+
+## Agent Definition
+
+Agent definition describes all traffic participants in the scenario, including the ego vehicle and NPC vehicles.
+
+#### Ego Vehicle
+
+The ego vehicle is the autonomous system under test.
+
+Related example:
 
 ```
 ego_vehicle: Model3
 ```
 
-### NPC Vehicles
+#### NPC Vehicles
 
-**NPC Vehicles**: Scenes can be populated with NPC vehicles
+NPC vehicles represent surrounding traffic participants that interact with the ego vehicle.
 
-Related Examples:
+Related example:
 
 ```
 npc1: Rubicon
-```
-
-### Map
-
-**map**: Just specify the name of the loaded map.
-
-
-
-Related Examples:
-
-```
-path: Path
-path.set_map("Town04")
 ```
 
 ### Scenario Mode
@@ -48,21 +78,6 @@ Related Examples:
 ```
 adaptive_targets: list of string = [npc4]
 user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_s1")
-```
-
-### Environment
-
-**Environment**:
-
-Related Examples:
-
-```
-environment: Environment
-environment.clouds(8)
-environment.air(80)
-environment.rain(20mmph)
-environment.wind(40mps)
-environment.fog(5m)
 ```
 
 ### Behavior model
@@ -165,7 +180,7 @@ In OpenBehavior, an agent's behavior is defined as a tuple $\mathcal{P} = \langl
 ##### 1. Scenario Mode Mapping
 The `adapt` function acts as a **Behavioral Switchboard**. By passing a `scenario_mode` string (e.g., `"adversarial"`, `"natural"`, or `"diverse"`), the framework automatically resolves the complex internal configurations for all targeted agents.
 
-##### 2. Non-deterministic Selection (`choose`)
+##### 2. Behavior-Models Selection (`choose`)
 
 In modes like `openbehavior_s1` and `openbehavior_s4`, we use the **`choose` keyword**. This is a powerful feature for **Fuzzing and Diversity Testing**:
 * It allows the user to provide multiple valid "options" for a single intent.
