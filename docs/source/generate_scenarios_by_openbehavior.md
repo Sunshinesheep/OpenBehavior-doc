@@ -78,20 +78,8 @@ Orchestration defines how agents are coordinated and controlled during scenario 
 
 ---
 
-####  Scenario Mode
 
-Scenario mode specifies high-level behavioral configurations that guide adaptive behavior binding and scenario generation.
-
-Related example:
-
-```
-adaptive_targets: list of string = [npc4]
-user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_s1")
-```
-
-### Behavior model
-
-**Behavior model**:
+#### Behavior model binding
 
 Related Examples:
 
@@ -106,6 +94,16 @@ npc3.drive(path) with:
     )
 ```
 
+####  Adaptive Behavior Profiles
+
+Scenario mode specifies high-level behavioral configurations that guide adaptive behavior binding and scenario generation.
+
+Related example:
+
+```
+adaptive_targets: list of string = [npc4]
+user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_s1")
+```
 
 
 ## Example: Lane Following on a Straight Road
