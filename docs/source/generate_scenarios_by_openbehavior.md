@@ -69,11 +69,20 @@ Related example:
 npc1: Rubicon
 ```
 
-### Scenario Mode
 
-**Scenario Mode**:
+---
 
-Related Examples:
+### Orchestration
+
+Orchestration defines how agents are coordinated and controlled during scenario execution, including behavior configuration and scenario-level control logic.
+
+---
+
+####  Scenario Mode
+
+Scenario mode specifies high-level behavioral configurations that guide adaptive behavior binding and scenario generation.
+
+Related example:
 
 ```
 adaptive_targets: list of string = [npc4]
