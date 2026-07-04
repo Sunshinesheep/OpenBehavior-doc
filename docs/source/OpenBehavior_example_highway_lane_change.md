@@ -73,9 +73,9 @@ scenario top:
 
 ### Adaptive Behavior Library (`adaptive.osc`)
 
-The `adaptive.osc` file defines a reusable behavior library that separates an agent's driving policy (**Behavior Model**) from its tactical objectives (**Behavior Logic**).
+The `adaptive.osc` file defines a reusable behavior library.
 
-Through the `adapt` function and `choose` mechanism, it dynamically selects different behavior configurations based on the scenario mode, enabling non-deterministic and diverse traffic behaviors.
+Through the `adapt` function and `choose` mechanism, it dynamically selects different behavior configurations based on the scenario mode, enabling diverse traffic behaviors.
 
 ```python
 struct adapt_npc_bm:
