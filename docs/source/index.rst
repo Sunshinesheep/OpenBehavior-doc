@@ -1,89 +1,59 @@
 Welcome to OpenBehavior's documentation!
 ========================================
 
-Explore our guides and examples for using Openbehavior.
+Explore the guides, language reference, and examples for OpenBehavior.
 
 .. figure:: images/tool.png
    :align: center
 
-   System Architecture of OpenBehavior Framework
+   Overview of the OpenBehavior Framework
 
-Tool-Independence Architecture
------------------------------
+What is OpenBehavior?
+---------------------
 
-The core design philosophy of **OpenBehavior** is the strict decoupling of the scenario description layer from specific simulator and ADS (Autonomous Driving System) implementations. This ensures that the framework remains highly extensible and portable across different testing environments.
+**OpenBehavior** is a behavior-oriented scenario description language for autonomous driving testing.
 
-🏗️ Core Concept: Tool-Independence
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unlike traditional scenario description languages that script traffic participants with predefined trajectories or fixed behaviors, OpenBehavior treats each traffic participant as an autonomous agent driven by a configurable **Behavior Model**. This enables realistic interactions between the ego vehicle and surrounding traffic participants while allowing users to customize driving policies for different testing objectives.
 
-"Tool-independence" means the language layer (**OpenBehavior** and **OBSpec**) is completely isolated from the backend tools. Instead of writing scripts tied to a specific simulator's API, the user defines scenarios at a logical level.
+The framework consists of three complementary components:
 
-Key Workflow
-^^^^^^^^^^^^
+* **OpenBehavior** – describes scenarios using adaptive behavior models instead of scripted motions.
+* **OpenSpec** – specifies safety and behavioral requirements for evaluating autonomous driving systems.
+* **Adaptive Orchestration** – automatically explores behavior models and scenario parameters to generate interaction-rich test scenarios.
 
-1. **Parsing**: The **Parser** translates the high-level language into a structured, intermediate scenario configuration.
-2. **Adaptation**: These configurations are instantiated via **lightweight adapters**.
-3. **Execution**: The adapters map the abstract language constructs to the specific APIs of the target simulator and ADS.
+Core Workflow
+-------------
 
-🛠️ Reference Implementation: CARLA + Apollo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The overall workflow consists of four stages:
 
-In our research, we demonstrate this portability using a **CARLA + Apollo** setup. This is a challenging and representative case that validates the framework's capability:
+1. **Describe** a logical scenario using OpenBehavior.
+2. **Assign** behavior models to traffic participants.
+3. **Execute** the scenario in the target simulator together with the ADS.
+4. **Evaluate** the execution using OpenSpec specifications, whose feedback guides the next round of scenario generation.
 
-- **Simulator Adapter**: Maps the scenario configurations to **CARLA** (e.g., spawning actors, setting weather, and initial states).
-- **ADS Adapter**: Interfaces with **Apollo** to extract state traces and control messages.
-- **Zero Core Modification**: Integrating this complex stack required only implementing these two adapters, without modifying the core OpenBehavior engine.
+Key Features
+------------
 
-.. tip::
+🚗 **Behavior-Oriented Scenario Modeling**
 
-   **Extensibility**: This architecture allows researchers to switch to other simulators (like LGSVL or HighwayEnv) or different ADS stacks with minimal engineering overhead.
+Traffic participants are modeled as autonomous agents rather than scripted actors. Users can assign different behavior models to represent various driving styles and decision-making policies.
 
-🔄 System Loop
-~~~~~~~~~~~~~~
+📋 **Customizable Behavioral Specifications**
 
-As shown in the architecture diagram:
+OpenSpec supports not only traditional safety properties, but also behavioral objectives, allowing users to evaluate how autonomous driving systems behave under different interaction patterns.
 
-- The **Monitor** receives the state trace from the ADS Adapter and evaluates it against **STL oracles**.
-- The resulting **robustness** values are fed back into the **Orchestration Algorithm**.
-- The algorithm then optimizes the next iteration of scenario parameters to effectively expose safety violations.
+🔍 **Adaptive Scenario Generation**
 
-💡 Addressing Scenario Complexity and Human Effort
-------------------------------------------------
+Instead of manually tuning scenario parameters, OpenBehavior automatically searches both behavior-model and parameter spaces to discover challenging interaction scenarios.
 
-A common inquiry regarding Domain-Specific Languages (DSLs) for autonomous driving is whether the effectiveness of scenario generation stems from the **language's design** or the **author's expertise**.
+📈 **Rich Interactive Behaviors**
 
-Our evaluation demonstrates that **OpenBehavior** significantly reduces the dependency on expert intervention through three key architectural advantages:
+By combining configurable behavior models with adaptive search, OpenBehavior can generate diverse multi-agent interactions that are difficult to construct using conventional scripted scenarios.
 
-1. High-Level Abstraction vs. Low-Level Scripting
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Getting Started
+---------------
 
-While complex scenarios *can* be hard-coded in simulators like CARLA or via Apollo's APIs, doing so requires deep knowledge of underlying middleware (e.g., ROS, Cyber RT).
-
-- **OpenBehavior** abstracts these into logical primitives.
-- **The Result:** Users focus on *what* the scenario should achieve (e.g., "cut-in with specific lateral velocity"), while the framework handles the *how* (API calls, sync, and initialization).
-
-2. Systematic Search Space vs. Manual Tuning
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The ability to expose safety violations in our experiments is not a result of "trial and error" by authors, but rather the **Orchestration Algorithm** navigating a formal search space defined by the language.
-
-- **OpenBehavior** allows users to define **Logical Scenarios** with parameter ranges.
-- The framework then automatically performs **fuzzing and optimization** to find the "edge cases" within those ranges—tasks that are practically impossible to perform manually with consistent results.
-
-3. Quantitative Evidence of Expressiveness
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To objectively assess the language beyond individual expertise, we emphasize its **Expressiveness**:
-
-- **Complexity Handling:** OpenBehavior supports multi-agent synchronized behaviors and reactive triggers (e.g., "IF ADS accelerates, THEN Agent B swerves"), which are traditionally difficult to synchronize manually.
-- **Oracle Integration:** By decoupling the **STL (Signal Temporal Logic) Oracle**, the language ensures that safety requirements are formally verified, removing the subjectivity of "what counts as a violation."
-
-.. important::
-
-   **Summary:** The success of the evaluation is a testament to the language’s ability to **systematize and automate** the search for complex safety-critical scenarios, effectively "distilling" expert knowledge into reusable, machine-executable templates.
-
-Get started :doc:`here <Introduction_to_OpenBehavior>`
-------------------------------------------------------
+Start with :doc:`Introduction_to_OpenBehavior` to learn the language basics and build your first OpenBehavior scenario.
 
 .. note::
 
@@ -97,7 +67,6 @@ Contents
    :caption: GETTING STARTED:
 
    Introduction_to_OpenBehavior
-   tool-inde
    getting_started
    OpenBehavior_example
 
@@ -114,7 +83,6 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: EXTENSION TO SIMULATIONS:
+   :caption: EXTENSION:
 
    OpenBehavior_connected_to
-
