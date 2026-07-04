@@ -107,12 +107,12 @@ auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
 
 ### Overview
 This example demonstrates a standard multi-vehicle interaction on a highway-style straight road.
-1. **The Ego Vehicle** follows a specific path with a "cautious" driving style.
-2. **Standard NPCs** (npc1, npc2, npc3) use rule-based "normal" models with randomized spatial ranges to ensure scenario diversity.
+1. **The Ego Vehicle** follows a specific path.
+2. **Standard NPCs** (npc1, npc2, npc3) use rule-based models with randomized spatial ranges to ensure scenario diversity.
 3. **Adaptive NPC** (npc4) utilizes our **Behavioral Model Binding** mechanism, which dynamically switches its driving profile based on the `scenario_mode`.
 
 ### Scenario Script
-The main script orchestrates the orchestration block. It defines the map, initializes actors, and executes a 40-second parallel simulation where each agent fulfills its bound Behavior Profile.
+The main script orchestrates the orchestration block. It defines the map, initializes actors, and executes a 40-second parallel simulation.
 
     import openbehavior_basic.osc
     import adaptive.osc
@@ -170,31 +170,30 @@ The main script orchestrates the orchestration block. It defines the map, initia
 ### adaptive.osc
 #### Understanding `adaptive.osc`: The Behavior Library
 
-The `adaptive.osc` file is the "Behavioral Brain" of the OpenBehavior framework. It defines a reusable **Behavior Profile Library** that decouples an agent's driving policy from the specific scenario context.
+The `adaptive.osc` file defines a reusable **Behavior Profile Library** that decouples an agent's driving policy from the specific scenario context.
 
 #### Core Concept: Behavioral Decoupling
 In OpenBehavior, an agent's behavior is defined as a tuple $\mathcal{P} = \langle \mathcal{M}, \mathcal{L} \rangle$:
-* **Model Configuration ($\mathcal{M}$):** Specifies the underlying decision-making engine (e.g., a rule-based `normal` script or a learning-based `NAG-RL_agent`) and its physical limits (`max_speed`, `max_acc`).
-* **Logic Configuration ($\mathcal{L}$):** Specifies the tactical goals and constraints (e.g., "start at Lane 3, end at Lane 1 ahead of the Ego vehicle").
+* **Model Configuration ($\mathcal{M}$):** Specifies the underlying decision-making policy (e.g., a rule-based `behavior_agent` script or a learning-based `NAG-RL_agent`) and hyperparameters.
+* **Logic Configuration ($\mathcal{L}$):** Specifies the logic constraints (e.g., "start at Lane 3, end at Lane 1 ahead of the Ego vehicle").
 
 ---
 
 #### Key Features in the Script
 
 ##### 1. Scenario Mode Mapping
-The `adapt` function acts as a **Behavioral Switchboard**. By passing a `scenario_mode` string (e.g., `"adversarial"`, `"natural"`, or `"diverse"`), the framework automatically resolves the complex internal configurations for all targeted agents.
+The `adapt` function acts as a **Behavioral Switchboard**. By passing a `scenario_mode` string (e.g., `"natural"`), the framework automatically resolves the complex internal configurations for all targeted agents.
 
 ##### 2. Behavior-Models Selection (`choose`)
 
-In modes like `openbehavior_s1` and `openbehavior_s4`, we use the **`choose` keyword**. This is a powerful feature for **Fuzzing and Diversity Testing**:
-* It allows the user to provide multiple valid "options" for a single intent.
-* During execution, the framework non-deterministically selects one option.
-* *Example:* In `openbehavior_s1`, the NPC might be controlled by a simple `behavior_agent` or a sophisticated `NAG-RL_agent`. This helps identify whether a safety violation is model-specific or a general logical flaw.
+In modes like `openbehavior_s1` and `openbehavior_s4`, we use the **`choose` keyword**. This is a powerful feature for **exploring the diversity scenario for testing**:
+* It allows the user to provide multiple valid "options" for a scenario.
+* *Example:* In `openbehavior_s1`, the NPC might be controlled by a rule_based `behavior_agent` or a learning_based `NAG-RL_agent`.
 
 ##### 3. Model-Aware Modifiers
 Notice the use of **General Modifiers** within the `logic_params`:
 * `ahead_of: ego_vehicle`: Relational positioning that works regardless of the coordinate system.
-* `at: start` / `at: end`: Defines the **Temporal Scope**, ensuring constraints are met at specific phases of the action without over-constraining the agent's reactive decision-making during the "middle" of the drive.
+* `at: start` / `at: end`: Defines the start and end state.
 
 ---
 
