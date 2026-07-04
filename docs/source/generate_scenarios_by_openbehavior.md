@@ -72,7 +72,7 @@ npc1: Rubicon
 
 ### Orchestration
 
-Orchestration defines how agents are coordinated and controlled during scenario execution, including behavior configuration and scenario-level control logic.
+Orchestration defines how agents are coordinated and controlled during scenario execution.
 
 
 #### Behavior model binding
