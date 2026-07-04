@@ -25,8 +25,6 @@ path: Path
 path.set_map("Town04")
 ```
 
----
-
 #### Environment
 
 The environment defines dynamic conditions such as weather and visibility.
