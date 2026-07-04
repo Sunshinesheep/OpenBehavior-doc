@@ -1,6 +1,6 @@
 # OpenBehavior Examples
 
-This section presents complete OpenBehavior examples that demonstrate how to describe interactive traffic scenarios, bind heterogeneous behavior models, and organize scenario logic using the OpenBehavior language.
+This section presents complete OpenBehavior examples that demonstrate how to describe interactive traffic scenarios, bind diverse behavior models, and organize scenario logic using the OpenBehavior language.
 
 ## Example: Three-Lane Highway Interaction (Lane Change)
 
@@ -8,7 +8,7 @@ This section presents complete OpenBehavior examples that demonstrate how to des
 
 This example demonstrates a lane-change interaction on a three-lane highway.
 
-The ego vehicle starts in **Lane 1** and intends to merge into **Lane 2**, while surrounding vehicles perform different maneuvers driven by heterogeneous behavior models.
+The ego vehicle starts in **Lane 1** and intends to merge into **Lane 2**, while surrounding vehicles perform different maneuvers driven by diverse behavior models.
 
 * **Npc1**: Starts in **Lane 2**, executes a forced lane change to **Lane 1**, then continues with a learning-based driving model.
 * **Npc2 & Npc3**: Originate from **Lane 3** and attempt to merge into **Lane 2** ahead of the ego vehicle. Their behavior is controlled by the `Scenario Mode` configuration.
@@ -193,7 +193,7 @@ actor Carlacola
 In this example, you learned how to:
 
 - Describe an interactive highway scenario
-- Bind heterogeneous behavior models to traffic participants
+- Bind diverse behavior models to traffic participants
 - Construct multi-stage behaviors using `parallel` and `serial`
 - Use `adaptive.osc` to enable behavior diversity
 - Reuse built-in language components
