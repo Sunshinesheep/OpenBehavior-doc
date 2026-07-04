@@ -101,6 +101,7 @@ Related example:
 ```
 adaptive_targets: list of string = [npc4]
 user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_s1")
+auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
 ```
 
 
