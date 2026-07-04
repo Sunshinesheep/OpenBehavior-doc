@@ -72,7 +72,7 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: LANGUAGE DESCRIPTION:
+   :caption: LANGUAGE REFERENCE:
 
    Types
    generate_scenarios_by_openbehavior
@@ -83,6 +83,6 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: EXTENSION:
+   :caption: EXECUTION BACKENDS:
 
    OpenBehavior_connected_to
