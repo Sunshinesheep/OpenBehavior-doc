@@ -53,7 +53,7 @@ By combining configurable behavior models with adaptive search, OpenBehavior can
 Getting Started
 ---------------
 
-Start with :doc:`Introduction_to_OpenBehavior` to learn the language basics and build your first OpenBehavior scenario.
+Start with :doc:`here <Introduction_to_OpenBehavior>` to learn the language basics and build your first OpenBehavior scenario.
 
 .. note::
 
