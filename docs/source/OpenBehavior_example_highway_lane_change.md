@@ -135,8 +135,7 @@ It provides:
 
 The complete implementation is available in:
 
-`openbehavior_basic.osc`
-
+`openbehavior_basic.osc <https://openbehavior-doc.readthedocs.io/en/latest/OpenBehavior_example_lane_following.html#openbehavior-basic-osc>`_
 ---
 
 ## Summary
