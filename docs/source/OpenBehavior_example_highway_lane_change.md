@@ -133,9 +133,7 @@ It provides:
 - Unit system definitions
 - Actor definitions and basic scenario components
 
-The complete implementation is available in:
-
-`openbehavior_basic.osc <https://openbehavior-doc.readthedocs.io/en/latest/OpenBehavior_example_lane_following.html>`_
+The complete implementation is available in:ref:`openbehavior-basic-osc`.
 ---
 
 ## Summary
