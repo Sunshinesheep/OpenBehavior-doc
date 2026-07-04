@@ -1,12 +1,13 @@
 Welcome to OpenBehavior's documentation!
 ========================================
 
-OpenBehavior is a behavior-centric scenario description language for testing autonomous driving systems (ADSs). It enables users to describe adaptive traffic scenarios with heterogeneous behavior models, specify testing objectives using OBSpec, and generate interaction-rich scenarios for systematic ADS testing.
+OpenBehavior is a behavior-centric scenario description language for testing autonomous driving systems (ADSs). It enables users to describe adaptive traffic scenarios with diverse behavior models, specify testing objectives using OBSpec, and generate interaction-rich scenarios for systematic ADS testing.
 
 .. figure:: images/Roadmap.jpg
+   :width: 70%
    :align: center
 
-   Overview of the OpenBehavior framework.
+   Workflow using OPENBEHAVIOR to test ADS.
 
 OpenBehavior consists of three complementary components:
 
