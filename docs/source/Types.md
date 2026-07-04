@@ -1,27 +1,27 @@
 # Types
 
-We can directly assign values to variables since OpenBehavior is a dynamic typed language. 
+OpenBehavior is a dynamically typed language, meaning variables can be assigned values without explicit type declarations.
 
 ## Basic Types
 
-### Strings
+### String
 
-The possible values are composed by string values.
+Represents textual values used in scenario definitions.
 
 ### Int
 
-The possible values consist of numbers.
+Represents integer numeric values.
 
 ## Special Types
 
 ### Position
 
-This type can describe position of objects. In OpenBehavior, **position** determines the relative positioning between vehicles.
+Represents the spatial position of an object in the scene. In OpenBehavior, **position** is used to define relative or absolute locations of vehicles.
 
 ### Lane
 
-In OpenBehaviror, **lane** determines the relative lane in which vehicles are located within the scene.
+Represents the lane index or relative lane position of a vehicle within the road network.
 
 ### Orientation
 
-In OpenBehavior, **orientation** describes the orientation of vehicles in the scene.
+Represents the heading or orientation of a vehicle in the scene.
