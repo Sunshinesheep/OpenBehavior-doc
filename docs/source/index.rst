@@ -3,7 +3,7 @@ Welcome to OpenBehavior's documentation!
 
 Explore the guides, language reference, and examples for OpenBehavior.
 
-.. figure:: images/tool.png
+.. figure:: images/Roadmap.jpg
    :align: center
 
    Overview of the OpenBehavior Framework
