@@ -8,7 +8,7 @@ OpenBehavior is a behavior-based language for validating ADS in complex interact
 
 The safety of ADSs fundamentally depends on their capability to handle complex multi-agent interactions. Critical scenarios,such as cut-ins or chain-reaction braking, emerge from dynamic  and autonomous interactions rather than static replays. However, most existing DSLs describe scenarios using predefined behavior scripts, where agent behaviors are largely fixed once the scenario starts.
 
-This observation motivates the introduction of behavior models into scenario generation. Unlike fixed scripts that execute without considering interaction context, behavior models equip agents with reactive decision-making capabilities. Agents can continuously adjust their actions based on surroundings.
+This observation motivates the introduction of behavior models into scenario generation. Unlike fixed scripts that execute without considering interaction context, behavior models equip agents with reactive decision-making capabilities. Agents can continuously adjust their actions based on their surroundings.
 
 ## What can you do with OpenBehavior?
 
@@ -27,8 +27,8 @@ OpenBehavior combines **adaptive behavior models** and **OBSpec-guided search** 
 
 ##### Feature Comparison Table
 <!--![Comparison Table](images/compare.png)-->
-<p align="center">
-  <img src="images/compare.png" alt="Comparison Table" width="700">
+<p align="left">
+  <img src="images/compare.png" alt="Comparison Table" width="500">
 </p>
 
 While conventional languages excel at defining physical parameter variations, OpenBehavior shifts the paradigm by introducing a novel policy-level abstraction. By decoupling agents from specific behavior models and introducing Intent Oracles, it enables the simulation of complex, reactive interactions. This approach explores both physical and behavioral search spaces, significantly expanding the coverage of safety-critical edge cases.
