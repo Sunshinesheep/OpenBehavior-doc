@@ -76,8 +76,6 @@ npc1: Rubicon
 
 Orchestration defines how agents are coordinated and controlled during scenario execution, including behavior configuration and scenario-level control logic.
 
----
-
 
 #### Behavior model binding
 
