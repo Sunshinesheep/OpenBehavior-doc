@@ -6,7 +6,7 @@ In OpenBehavior, a scenario is organized into three core components:
 - **Agent Definition**
 - **Orchestration**
 
-This separation cleanly decouples environment specification, agent modeling, and execution control, enabling modular and reusable scenario construction.
+This separation cleanly decouples environment specification, agent modeling, and orchestration logic, enabling modular and reusable scenario construction.
 
 ---
 
@@ -27,7 +27,7 @@ path.set_map("Town04")
 
 #### Environment
 
-The environment defines dynamic conditions such as weather and visibility.
+The environment defines dynamic conditions such as weather.
 
 Related example:
 
@@ -45,7 +45,7 @@ environment.fog(5m)
 
 ## Agent Definition
 
-Agent definition describes all traffic participants in the scenario, including the ego vehicle and NPC vehicles.
+The agent definition describes all traffic participants in the scenario, including the ego vehicle and NPC vehicles.
 
 #### Ego Vehicle
 
@@ -81,7 +81,7 @@ Related Examples:
 
 ```
 npc3.drive(path) with:
-    set_behavior_model(behavior_type: Rule, model:normal, hyperparameters: Default)
+    set_behavior_model(behavior_type: Rule, model:behavior_agent, hyperparameters: Default)
     set_behavior_logic(
         lane:"[1..4], at:start",
         position:"[-20..30], behind:ego_vehicle, at:start",
@@ -103,15 +103,15 @@ auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
 ```
 
 
-## Example: Lane Following on a Straight Road
+### Example 2: Lane Following on a Straight Road
 
-### Overview
+#### Overview
 This example demonstrates a standard multi-vehicle interaction on a highway-style straight road.
 1. **The Ego Vehicle** follows a specific path.
-2. **Standard NPCs** (npc1, npc2, npc3) use rule-based models with randomized spatial ranges to ensure scenario diversity.
+2. **Standard NPCs** (npc1, npc2, npc3) use rule-based "normal" models with randomized spatial ranges to ensure scenario diversity.
 3. **Adaptive NPC** (npc4) utilizes our **Behavioral Model Binding** mechanism, which dynamically switches its driving profile based on the `scenario_mode`.
 
-### Scenario Script
+#### Scenario Script
 The main script orchestrates the orchestration block. It defines the map, initializes actors, and executes a 40-second parallel simulation.
 
     import openbehavior_basic.osc
@@ -182,7 +182,7 @@ In OpenBehavior, an agent's behavior is defined as a tuple $\mathcal{P} = \langl
 #### Key Features in the Script
 
 ##### 1. Scenario Mode Mapping
-The `adapt` function acts as a **Behavioral Switchboard**. By passing a `scenario_mode` string (e.g., `"natural"`), the framework automatically resolves the complex internal configurations for all targeted agents.
+The `adapt` function maps a scenario_mode string (e.g., "natural") to the corresponding internal configurations of all targeted agents.
 
 ##### 2. Behavior-Models Selection (`choose`)
 
