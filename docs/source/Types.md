@@ -40,10 +40,12 @@ Represents an entity in the scenario, such as vehicles or pedestrians. Actors ar
 
 **Example:**
 ```python
-actor: "Model3"
-actor: "Rubicon"
-actor: "Walker02"
-actor: "Carlacola"
+actor: Model3
+actor: Rubicon
+actor: TT
+actor: A2
+actor: Carlacola
+actor: Walker02
 ```
 
 ### Position
