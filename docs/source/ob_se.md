@@ -52,7 +52,7 @@ Transitions between phases occur based on the following rules for a phase $P$ ac
 ## 5. Global Termination 
 The simulation must adhere to high-level constraints:
 
-* **Ego-Dominated Termination**: The entire trace $\pi$ terminates at $\theta_n$ if and only if the Ego vehicle reaches its destination or a critical system termination is triggered (e.g., `GlobalTerm(\theta_n) = True`).
+* **Ego-Dominated Termination**: The entire trace $\pi$ terminates at $\theta_n$ if and only if the Ego vehicle reaches its destination or a critical system termination is triggered (e.g., `GlobalTerm($\theta_n$) = True`).
 * **Preemption**: Upon global termination, all active NPC phases are immediately halted, regardless of their local progress.
 
 Finally,
