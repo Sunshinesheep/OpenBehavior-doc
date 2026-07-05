@@ -1,6 +1,6 @@
 # OBSpec: Full Formal Semantics
 
-OBSpec (OpenBehavior Specification) is a unified language for specifying both **Intent Oracles** and **Safety Oracles**. It is built upon Signal Temporal Logic (STL) with extensions for autonomous driving behavior analysis.
+OBSpec (OpenBehavior Specification) is a unified language for specifying both **Behavioral Oracles** and **Safety Oracles**. It is built upon Signal Temporal Logic (STL) with extensions for autonomous driving behavior analysis.
 
 ---
 
@@ -17,18 +17,19 @@ We define the evaluation of primitives over a time interval $I \subseteq [0, n]$
 
 ### A. Statistical Functions (Intensity & Instability)
 These functions quantify the characteristics of a continuous signal $s$ (e.g., acceleration variance for aggressiveness):
-* **Standard Deviation:** $\llbracket \text{std}(s) \rrbracket_\pi^I = \sqrt{\frac{1}{|I|} \sum_{t \in I} ( s^\pi_t - \mu )^2 }$
-* **Average:** $\llbracket \text{avg}(s) \rrbracket_\pi^I = \frac{1}{|I|} \sum_{t \in I} s^\pi_t$
-* **Extrema:** $\llbracket \text{max}(s) \rrbracket_\pi^I = \max_{t \in I} (s^\pi_t)$ and $\llbracket \text{min}(s) \rrbracket_\pi^I = \min_{t \in I} (s^\pi_t)$
+* **Average:** $\llbracket \texttt{avg}(s) \rrbracket_\pi^I = \frac{1}{|I|} \sum_{t \in I} s^\pi_t$
+* **Standard Deviation:** $\llbracket \texttt{std}(s) \rrbracket_\pi^I = \sqrt{\frac{1}{|I|} \sum_{t \in I} (s^\pi_t - \mu)^2}$, where $\mu = \llbracket \texttt{avg}(s) \rrbracket_\pi^I$
+* **Maximum:** $\llbracket \texttt{max}(s) \rrbracket_\pi^I = \max_{t \in I} (s^\pi_t)$
+* **Minimum:** $\llbracket \texttt{min}(s) \rrbracket_\pi^I = \min_{t \in I} (s^\pi_t)$
 
-### B. Event Functions (Frequency & Persistence)
+### B. Maneuver Functions (Frequency & Persistence)
 These functions operate on semantic predicates $p$ to capture discrete maneuver patterns:
-* **Count (Rising Edge):** $\llbracket \text{count}(p) \rrbracket_\pi^I = \sum_{t \in I} \mathbb{I}( p^\pi_t \wedge \neg p^\pi_{t-1} )$
-* **Switch Count (Total Transitions):** $\llbracket \text{switch\_count}(p) \rrbracket_\pi^I = \sum_{t \in I} \mathbb{I}( p^\pi_t \neq p^\pi_{t-1} )$
-* **Duration:** $\llbracket \text{duration}(p) \rrbracket_\pi^I = \sum_{t \in I} \mathbb{I}(p^\pi_t) \cdot \Delta t$
+* **Count (Rising Edge):** $\llbracket \texttt{count}(p) \rrbracket_\pi^I = \sum_{t \in I} \mathbb{I}(p^\pi_t \wedge \neg p^\pi_{t-1})$, with $p^\pi_{-1} = \text{False}$
+* **Switch Count (Total Transitions):** $\llbracket \texttt{switch\_count}(p) \rrbracket_\pi^I = \sum_{t \in I} \mathbb{I}(p^\pi_t \neq p^\pi_{t-1})$
+* **Duration:** $\llbracket \texttt{duration}(p) \rrbracket_\pi^I = \sum_{t \in I} \mathbb{I}(p^\pi_t) \cdot \Delta t$, with sampling interval $\Delta t$
 
 ### C. Spatial Metrics
-* **Distance:** $\llbracket \text{dist}(A, B) \rrbracket_\pi^t = \| \text{pos}_A(\theta_t) - \text{pos}_B(\theta_t) \|_2$
+* **Distance:** $\llbracket \texttt{dist}(A, B) \rrbracket_\pi^t = \| \text{pos}_A(\theta_t) - \text{pos}_B(\theta_t) \|_2$
 
 ---
 
