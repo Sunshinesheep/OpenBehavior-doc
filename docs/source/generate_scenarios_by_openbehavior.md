@@ -43,7 +43,7 @@ environment.fog(5m)
 
 ---
 
-## Agent Definition
+### Agent Definition
 
 The agent definition describes all traffic participants in the scenario, including the ego vehicle and NPC vehicles.
 
