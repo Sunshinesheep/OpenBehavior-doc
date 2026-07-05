@@ -56,7 +56,7 @@ The simulation must adhere to high-level constraints:
 * **Preemption**: Upon global termination, all active NPC phases are immediately halted, regardless of their local progress.
 
 Finally,
-    * All agents must remain within the feasible regions of $\theta(\mathit{map})$.
-    * Kinematic limits (max speed, acceleration) must be respected.
-    * Agents must follow lane directionality (no illegal reversing).
-    * **No Initial Overlap**: Distinct actors in $\theta_0$ must have non-overlapping physical positions.
+    All agents must remain within the feasible regions of $\theta(\mathit{map})$.
+    Kinematic limits (max speed, acceleration) must be respected.
+    Agents must follow lane directionality (no illegal reversing).
+    Distinct actors in $\theta_0$ must have non-overlapping physical positions.
