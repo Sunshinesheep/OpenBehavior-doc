@@ -13,7 +13,7 @@ $$
 \mathit{statAtom} & ::= & \mathit{statFunc}(\mathit{signal})~\mathit{op}~\mathit{num} \\
 \mathit{statFunc} & ::= & \texttt{avg} \mid \texttt{std} \mid \texttt{max} \mid \texttt{min} \\
 \mathit{maneuverAtom} & ::= & \mathit{manFunc}(\mathit{maneuver})~\mathit{op}~\mathit{num} \\
-\mathit{manFunc} & ::= & \texttt{count} \mid \texttt{duration} \mid \texttt{switch\_count} \\
+\mathit{manFunc} & ::= & \texttt{count} \mid \texttt{duration} \mid \texttt{switch_count} \\
 \mathit{spatialAtom} & ::= & \mathit{dist}(\mathit{entity}, \mathit{entity})~\mathit{op}~\mathit{num} \\
 \mathit{entity} & ::= & \mathit{agent} \mid \mathit{point} \\
 \\
