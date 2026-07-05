@@ -114,10 +114,6 @@ This example demonstrates a standard multi-vehicle interaction on a highway-styl
 
 <img src="images/s3.png" alt="s3" width="400">
 
-.. figure:: /images/s3.png
-   :width: 70%
-   :align: center
-
 #### Scenario Script
 The main script orchestrates the orchestration block. It defines the map, initializes actors, and executes a 40-second parallel simulation.
 
