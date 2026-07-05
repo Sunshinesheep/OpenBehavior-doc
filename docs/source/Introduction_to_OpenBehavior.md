@@ -22,7 +22,7 @@ With OpenBehavior, you can:
 
 ## Comparison with Other Languages
 
-Existing scenario description languages primarily focus on describing physical scenes and predefined traffic behaviors. OpenBehavior extends this paradigm by introducing adaptive behavior models and intent-guided scenario generation, enabling richer interactions and more effective exploration of safety-critical scenarios.
+Existing scenario description languages describe agent behaviors in a predefined manner. OpenBehavior extends this paradigm by introducing adaptive behavior models and objectives-guided scenario generation, enabling richer interactions and more effective exploration of safety-critical scenarios.
 
 ### Feature Comparison
 
