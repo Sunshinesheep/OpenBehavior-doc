@@ -1,5 +1,5 @@
 # Overall BNF
-
+<!--
 ```
 <Scenario> ::= scenario_top: <GlobalConfig>+ ; 
                (<AgentDecl>+ | <Orchestration>) <AdaptProfile>*
@@ -40,5 +40,5 @@
 <Param> ::= <Key>:<Val>
 <Val>   ::= <Int> | <String> | <ID>
 <GenVal> ::= <Int> | [<Int>..<Int>]
-```
+-->
 
