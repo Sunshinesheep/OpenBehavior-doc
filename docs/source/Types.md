@@ -93,6 +93,7 @@ Represents a trajectory or route followed by an actor. A path can be predefined 
 path: "RouteA"
 path: "lane_follow"
 path: "ego_relative_path"
+```
 
 <!--
 ### Ego Vehicle 
