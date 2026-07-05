@@ -15,7 +15,7 @@ These limitations motivate the introduction of behavior models into scenario des
 With OpenBehavior, you can:
 
 - Describe traffic scenarios using a behavior-centric language.
-- Bind heterogeneous behavior models to traffic participants.
+- Bind diverse behavior models to traffic participants.
 - Specify testing objectives using OBSpec.
 - Customize traffic behaviors through reusable behavior models.
 - Evaluate autonomous driving systems (ADSs) under complex traffic interactions.
