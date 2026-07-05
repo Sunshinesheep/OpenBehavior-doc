@@ -1,6 +1,6 @@
 # OpenBehavior Examples
 
-This section presents complete OpenBehavior examples that demonstrate how to describe interactive traffic scenarios, bind diverse behavior models, and organize scenario logic using the OpenBehavior language.
+This section presents an OpenBehavior example that demonstrates how to describe interactive traffic scenarios, bind diverse behavior models, and organize scenario logic using the OpenBehavior language.
 
 ## Example: Three-Lane Highway Interaction (Lane Change)
 
@@ -39,13 +39,13 @@ scenario top:
     npc2: TT
     npc3: A2
     
-    # Batch bind behavioral configurations to Npc2 and Npc3
+    # Batch Bind behavioral configurations to Npc2 and Npc3
     adaptive_targets: list of string = [npc2, npc3]
     user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "mode_1")
     auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
 
     do parallel: 
-        # Ego Vehicle: Lane 1 → Lane 2
+        # Ego Vehicle: Lane 1 -> Lane 2
         ego_vehicle.drive(path) with:
             set_behavior_model(behavior_type: Learning, model: Apollo, hyperparameters: default)
             set_behavior_logic(
@@ -53,7 +53,7 @@ scenario top:
                 lane: "2, at:end", position: "260, at:end"
             )
 
-        # Npc1: Multi-stage interaction
+        # Npc1: Initial Drive -> Lane Change -> Interaction
         serial:
             start: npc1.drive(path) with:
                 set_behavior_model(behavior_type: Learning, model: NAG-RL_agent)
@@ -77,7 +77,7 @@ The `adaptive.osc` file defines a reusable behavior library.
 
 Through the `adapt` function and `choose` mechanism, it dynamically selects different behavior configurations based on the scenario mode, enabling diverse traffic behaviors.
 
-```python
+```
 struct adapt_npc_bm:
     def adapt(scenario_mode: string) is
         if scenario_mode == "mode_1":
@@ -88,6 +88,14 @@ struct adapt_npc_bm:
                         behavior_type: "Learning",
                         hyperparameters: default
                     }
+                    logic = {
+                        logic_params: {
+                            lane: "3, at:start",
+                            position: "[10..30], ahead_of: ego_vehicle, at:start",
+                            lane: "2, at:end",
+                            position: "[30..50], ahead_of: ego_vehicle, at:end"
+                        }
+                    }
                 },
                 {
                     model = {
@@ -95,31 +103,56 @@ struct adapt_npc_bm:
                         behavior_type: "Rule",
                         hyperparameters: default
                     }
+                    logic = {
+                        logic_params: {
+                            lane: "3, at:start",
+                            position: "[10..40], ahead_of: ego_vehicle, at:start",
+                            lane: "2, at:end",
+                            position: "[30..40], ahead_of: ego_vehicle, at:end"
+                        }
+                    }
                 }
 
-        elif scenario_mode == "mode_2":
-            choose:
-                {
-                    model = {
-                        model_name: "cautious_behavior_agent",
-                        behavior_type: "Rule",
-                        hyperparameters: {
-                            max_acc: 5,
-                            max_speed: 20
-                        }
-                    }
-                },
-                {
-                    model = {
-                        model_name: "NAG-RL_agent",
-                        behavior_type: "Learning",
-                        hyperparameters: {
-                            max_acc: 5,
-                            max_speed: 20
-                        }
+    elif scenario_mode == "mode_2":
+        choose:
+            {
+                model = {
+                    model_name: "cautious_behavior_agent",
+                    behavior_type: "Rule",
+                    hyperparameters: {
+                        max_acc: 5,
+                        max_speed: 20
                     }
                 }
+                logic = {
+                    logic_params: {
+                        lane:"[2..4], at:start",
+                        position:"[5..20], ahead_of:ego_vehicle, at:start",
+                        lane:"2, at:end",
+                        position:"[-20..30], ahead_of:ego_vehicle, at:end"
+                    }
+                }
+            },
+            {
+                model = {
+                    model_name: "NAG-RL_agent",
+                    behavior_type: "Learning",
+                    hyperparameters: {
+                        max_acc: 5,
+                        max_speed: 20
+                    }
+                }
+                logic = {
+                    logic_params: {
+                        lane:"[2..4], at:start",
+                        position:"[5..20], ahead_of:ego_vehicle, at:start",
+                        lane:"2, at:end",
+                        position:"[-20..30], ahead_of:ego_vehicle, at:end"
+                    }
+                }
+            }
 ```
+
 
 ---
 
@@ -128,9 +161,6 @@ struct adapt_npc_bm:
 The `openbehavior_basic.osc` file defines the core built-in language constructs, including physical types, units, actors, and modifiers used across scenarios.
 
 It provides:
-
-- Physical types (time, length, velocity, angle)
-- Unit system definitions
 - Actor definitions and basic scenario components
 
 `openbehavior-basic-osc`：
