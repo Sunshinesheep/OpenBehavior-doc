@@ -4,24 +4,22 @@ The formal syntax of **OBSpec** defines the structure of oracle formulas used to
 
 $$
 \begin{array}{r c l}
-\langle obspec \rangle & ::= & (\text{intentOracle} \mid \text{safetyOracle}) \text{ = } \langle \varphi \rangle \\
+\mathit{obspec} & ::= & (\texttt{intentOracle} \mid \texttt{safetyOracle}) \texttt{ = } \varphi \\
 \\
-\langle \varphi \rangle & ::= & \langle atom \rangle \mid \neg \langle \varphi \rangle \mid \langle \varphi \rangle \ (\wedge \mid \vee \mid \rightarrow) \ \langle \varphi \rangle \\
-                        & \mid & G_{[a,b]}(\langle \varphi \rangle) \mid F_{[a,b]}(\langle \varphi \rangle) \mid \langle \varphi \rangle \ U \ \langle \varphi \rangle \mid X \ \langle \varphi \rangle \\
+\varphi & ::= & \mathit{atom} \mid \neg \varphi \mid \varphi \wedge \varphi \mid \varphi \vee \varphi \mid \varphi \rightarrow \varphi \\
+      & \mid & G_{[a,b]} \varphi \mid F_{[a,b]} \varphi \mid \varphi U \varphi \mid X \varphi \\
 \\
-\langle atom \rangle    & ::= & \langle statFunc \rangle(\langle signal \rangle) \ \langle op \rangle \ \langle num \rangle \\
-                        & \mid & \langle eventFunc \rangle(\langle predicate \rangle) \ \langle op \rangle \ \langle num \rangle \\
-                        & \mid & \text{dist}(\langle agent \rangle, \langle agent \rangle \mid \text{target}) \ \langle op \rangle \ \langle num \rangle \\
+\mathit{atom} & ::= & \mathit{statAtom} \mid \mathit{maneuverAtom} \mid \mathit{spatialAtom} \\
+\mathit{statAtom} & ::= & \mathit{statFunc}(\mathit{signal})~\mathit{op}~\mathit{num} \\
+\mathit{statFunc} & ::= & \texttt{avg} \mid \texttt{std} \mid \texttt{max} \mid \texttt{min} \\
+\mathit{maneuverAtom} & ::= & \mathit{manFunc}(\mathit{maneuver})~\mathit{op}~\mathit{num} \\
+\mathit{manFunc} & ::= & \texttt{count} \mid \texttt{duration} \mid \texttt{switch\_count} \\
+\mathit{spatialAtom} & ::= & \mathit{dist}(\mathit{entity}, \mathit{entity})~\mathit{op}~\mathit{num} \\
+\mathit{entity} & ::= & \mathit{agent} \mid \mathit{point} \\
 \\
-\langle statFunc \rangle & ::= & \text{avg} \mid \text{std} \mid \text{max} \mid \text{min} \\
-\langle eventFunc \rangle & ::= & \text{count} \mid \text{duration} \mid \text{switch\_count} \\
+\mathit{signal} & ::= & \texttt{speed}(\mathit{agent}) \mid \texttt{acc}(\mathit{agent}) \mid \texttt{brake}(\mathit{agent}) \mid \texttt{steer}(\mathit{agent}) \\
+\mathit{maneuver} & ::= & \texttt{ChangingLane}(\mathit{agent}) \mid \texttt{Overtaking}(\mathit{agent}) \mid \texttt{TurningAround}(\mathit{agent}) \\
 \\
-\langle signal \rangle   & ::= & (\text{speed} \mid \text{acc} \mid \text{brake} \mid \text{steer})(\langle agent \rangle) \\
-\langle predicate \rangle& ::= & (\text{ChangingLane} \mid \text{Overtaking} \mid \text{TurningAround})(\langle agent \rangle) \\
-                        & \mid & \langle signal \rangle \ \langle op \rangle \ \langle num \rangle \\
-\\
-\langle op \rangle      & ::= & \text{'>'} \mid \text{'<'} \mid \text{'>='} \mid \text{'<='} \mid \text{'=='} \mid \text{'!='} \\
-\langle agent \rangle   & ::= & \text{ego} \mid \text{npc}_{1} \mid \text{npc}_{2} \mid \dots \\
-\langle num \rangle     & ::= & \mathbb{R}
+\mathit{op} & ::= & > \mid < \mid >= \mid <= \mid == \mid !=
 \end{array}
 $$
