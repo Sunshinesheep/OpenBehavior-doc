@@ -26,7 +26,7 @@ Existing scenario description languages describe agent behaviors in a predefined
 
 ### Feature Comparison
 
-```{image} images/compare.png
+```{image} images/compare.jpg
 :width: 500px
 :alt: Comparison Table
 ```
