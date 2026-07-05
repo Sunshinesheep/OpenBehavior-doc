@@ -9,11 +9,11 @@ OpenBehavior is a behavior-centric scenario description language for testing aut
 
    Workflow using OPENBEHAVIOR to test ADS.
 
-OpenBehavior consists of three complementary components:
+OpenBehavior consists of three components:
 
-* **OpenBehavior** – describes traffic scenarios using adaptive behavior models instead of predefined motion scripts.
+* **OpenBehavior** – describes traffic scenarios with adaptive behavior models instead of predefined motion scripts.
 * **OBSpec** – specifies both safety and behavioral testing objectives.
-* **Adaptive Orchestration** – generates diverse interaction scenarios by exploring behavior models and scenario parameters.
+* **Adaptive Orchestration** – generates diverse scenarios by exploring behavior models and scenario parameters.
 
 Getting Started
 ---------------
