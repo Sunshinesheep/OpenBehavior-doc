@@ -111,10 +111,7 @@ This example demonstrates a standard multi-vehicle interaction on a highway-styl
 2. **Standard NPCs** (npc1, npc2, npc3) use rule-based "normal" models with randomized spatial ranges to ensure scenario diversity.
 3. **Adaptive NPC** (npc4) utilizes our **Behavioral Model Binding** mechanism, which dynamically switches its driving profile based on the `scenario_mode`.
 
-<!--![Lane Following on a Straight Road](images/s3.png) -->
-<p align="center">
-  <img src="images/s3.png" alt="Lane Following on a Straight Road" width="400">
-</p>
+![Lane Following on a Straight Road](images/s3.png)
 
 *Figure: Lane Following on a Straight Road in this example.*
 
