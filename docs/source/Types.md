@@ -94,8 +94,6 @@ Represents a trajectory or route followed by an actor. A path can be predefined 
 **Example:**
 ```python
 path: "RouteA"
-```
-
 
 ### Ego Vehicle 
 Represents the system under test in the scenario.
