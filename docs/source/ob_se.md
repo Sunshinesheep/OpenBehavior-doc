@@ -21,7 +21,7 @@ A scenario specification defines a *space* of possible traces. A concrete trace 
 
 ---
 
-## 3. Composition Logic
+## 3. Phase Composition
 The execution flow is governed by hierarchical composition operators:
 
 ### Sequential Composition ($P_1 ; P_2$)
