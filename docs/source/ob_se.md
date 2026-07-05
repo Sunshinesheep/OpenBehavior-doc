@@ -36,7 +36,7 @@ The trace satisfies the constraints of both $P_1$ and $P_2$ simultaneously.
 
 ---
 
-## 4. Phase Termination Logic
+## 4. Phase Termination
 Transitions between phases occur based on the following rules for a phase $P$ active in $\pi_{k..m}$:
 
 1.  **Duration-Bounded Maintenance**: 
