@@ -182,11 +182,11 @@ In OpenBehavior, an agent's behavior is defined as a tuple $\mathcal{P} = \langl
 #### Key Features in the Script
 
 ##### 1. Scenario Mode Mapping
-The `adapt` function maps a scenario_mode string (e.g., "natural") to the corresponding internal configurations of all targeted agents.
+The `adapt` function maps a scenario_mode string (e.g., "openbehavior_s1") to the corresponding internal configurations of all targeted agents.
 
 ##### 2. Behavior-Models Selection (`choose`)
 
-In modes like `openbehavior_s1` and `openbehavior_s4`, we use the **`choose` keyword**. This is a powerful feature for **exploring the diversity scenario for testing**:
+In modes such as openbehavior_s1 and openbehavior_s4, we introduce the **`choose`** keyword to facilitate the exploration of diverse test scenarios.
 * It allows the user to provide multiple valid "options" for a scenario.
 * *Example:* In `openbehavior_s1`, the NPC might be controlled by a rule_based `behavior_agent` or a learning_based `NAG-RL_agent`.
 
@@ -197,7 +197,7 @@ Notice the use of **General Modifiers** within the `logic_params`:
 
 ---
 
-#### 🛠 How to Use This Library
+#### How to Use This Library
 In your main scenario file, you can simply "Batch Bind" these behaviors to multiple NPCs using the `auto_orchestrates_behavior` primitive:
 
 ```python
@@ -211,12 +211,11 @@ user_adaptive_npc_bm : string = adapt_npc_bm.adapt(scenario_mode: "openbehavior_
 auto_orchestrates_behavior(user_adaptive_npc_bm, adaptive_targets)
 
 ```
-##### 🌟 Why Use Adaptive Behavior Binding?
+##### Why Use Adaptive Behavior Binding?
 
-The `adapt_npc_bm` library streamlines the complexity of scenario creation by abstracting individual NPC configurations into high-level **Scenario Modes**. Instead of manually defining parameters for every vehicle, you can use the `auto_orchestrates_behavior` primitive to batch-bind sophisticated, context-aware behaviors to a group of agents. This approach reduces boilerplate code, allowing you to transform the entire environment's traffic dynamics by changing a single parameter.
+The `adapt_npc_bm` library simplifies scenario creation by abstracting individual NPC configurations into high-level **Scenario Modes**. Instead of manually specifying parameters for each vehicle, the `auto_orchestrates_behavior` primitive enables batch assignment of coordinated, context-aware behaviors to multiple agents. This reduces repetitive configuration and allows the overall traffic dynamics of the environment to be controlled via a single parameter.
 
-Users can switch between different behavior models and parameter sets by simply changing the `scenario_mode`. This avoids manual configuration for each individual NPC:
-
+Users can switch between different behavior models and parameter sets simply by changing the `scenario_mode`, avoiding the need to manually configure each individual NPC.
 ```
 struct adapt_npc_bm:
     def adapt(scenario_mode: string) is
