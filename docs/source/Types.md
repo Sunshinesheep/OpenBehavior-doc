@@ -34,6 +34,18 @@ lane_id = 2
 
 ## Special Types
 
+### Actor
+
+Represents an entity in the scenario, such as vehicles or pedestrians. Actors are instantiated from predefined models or templates.
+
+**Example:**
+```python
+actor: "Model3"
+actor: "Rubicon"
+actor: "Walker02"
+actor: "Carlacola"
+```
+
 ### Position
 
 Represents the spatial position of an object in the scene. Positions can be expressed as absolute values or relative references.
@@ -71,3 +83,20 @@ orientation: "0deg"
 orientation: "90deg"
 orientation: "rad(1.57)"
 ```
+
+### Path
+
+Represents a trajectory or route followed by an actor. A path can be predefined or dynamically generated.
+
+**Example:**
+```python
+path: "RouteA"
+path: "lane_follow"
+path: "ego_relative_path"
+
+<!--
+### Ego Vehicle 
+Represents the system under test in the scenario.
+Example:
+ego_vehicle: "DUT"
+-->
