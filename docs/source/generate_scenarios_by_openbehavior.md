@@ -186,7 +186,7 @@ The `adapt` function maps a scenario_mode string (e.g., "openbehavior_s1") to th
 
 ##### 2. Behavior-Models Selection (`choose`)
 
-In modes such as openbehavior_s1 and openbehavior_s4, we introduce the **`choose`** keyword to facilitate the exploration of diverse test scenarios.
+In modes such as openbehavior_s1 and openbehavior_s2, we introduce the **`choose`** keyword to facilitate the exploration of diverse test scenarios.
 * It allows the user to provide multiple valid "options" for a scenario.
 * *Example:* In `openbehavior_s1`, the NPC might be controlled by a rule_based `behavior_agent` or a learning_based `NAG-RL_agent`.
 
@@ -257,76 +257,7 @@ struct adapt_npc_bm:
                     }
                 }
             }
-    elif scenario_mode == "natural":
-        model = {
-            model_name: "normal_behavior_agent",
-            behavior_type: "Rule",
-            hyperparameters: {
-                max_acc: 5
-            }
-        }
-        logic={
-            logic_params: {
-                lane: "3, at:start",
-                position: "[1..20], behind: ego_vehicle, at:start",
-                lane: "1, side_of: ego_vehicle, side: right, at:end",
-                position: "[50..70], ahead_of: ego_vehicle, at:end"
-            }
-        }
-    elif scenario_mode == "diverse":
-        choose:
-            {
-                model = {
-                    model_name: "normal_behavior_agent",
-                    behavior_type: "Rule",
-                    hyperparameters: {
-                        max_acc: 5,
-                        max_speed: 20
-                    }
-                }
-                logic = {
-                    logic_params: {
-                        lane: "3, at:start",
-                        position: "[1..100], behind: ego_vehicle, at:start",
-                        lane: "1, at:end",
-                        position: "[30..70], ahead_of: ego_vehicle, at:end"
-                    }
-                }
-            },
-            {
-                model = {
-                    model_name: "cautious_behavior_agent",
-                    behavior_type: "Rule",
-                    hyperparameters: {
-                        max_acc: 5,
-                        max_speed: 20
-                    }
-                }
-                logic = {
-                    logic_params: {
-                        lane: "3, at:start",
-                        position: "[1..100], ahead_of: ego_vehicle, at:start",
-                        lane: "1, at:end",
-                        position: "[30..70], ahead_of: ego_vehicle, at:end"
-                    }
-                }
-            }
-    elif scenario_mode == "adversarial":
-        model= {
-            model_name: "aggressive_behavior_agent",
-            behavior_type: "Rule",
-            hyperparameters: "default"
-        }
-        logic= {
-            logic_params: {
-                lane: "3, at:start",
-                position: "[60..80m], behind: ego_vehicle, at:start",
-                lane: "1, at:end",
-                position: "[50..80m], ahead_of: ego_vehicle, at:end"
-            }
-        }
-
-    elif scenario_mode == "openbehavior_s4":
+    elif scenario_mode == "openbehavior_s2":
         choose:
             {
                 model = {
