@@ -42,3 +42,6 @@
 <GenVal> ::= <Int> | [<Int>..<Int>]
 -->
 
+![Highway Lane Change Interaction](images/openbehavior.png)
+
+*Figure: Core syntax of OpenBehavior*
