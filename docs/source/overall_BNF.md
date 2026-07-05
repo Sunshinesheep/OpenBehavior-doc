@@ -1,4 +1,4 @@
-# Overall BNF
+# OpenBehavior: Formal Syntax Definition (BNF)
 <!--
 ```
 <Scenario> ::= scenario_top: <GlobalConfig>+ ; 
