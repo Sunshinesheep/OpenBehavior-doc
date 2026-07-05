@@ -298,6 +298,8 @@ struct adapt_npc_bm:
 ```
 
 ### Scenario Illustrations
+<img src="/images/s3.png" alt="s3" width="400" height="300">
 
-![s3](/images/s3.png)
+<!--
+![s3](/images/s3.png) -->
 
