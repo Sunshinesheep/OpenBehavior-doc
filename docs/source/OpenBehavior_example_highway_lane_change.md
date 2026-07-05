@@ -152,8 +152,7 @@ struct adapt_npc_bm:
                 }
             }
 ```
-
-
+<!--
 ---
 
 ### OpenBehavior Basic Library
@@ -215,7 +214,7 @@ actor A2
 actor Carlacola
 
 ```
-
+-->
 ---
 
 ## Summary
