@@ -132,3 +132,34 @@ Run the AVUnit baseline using:
 ```bash
 python Law_Judgement/GeneticAlgorithm.py
 ```
+
+### AV-Fuzzer & Random
+
+For AV-Fuzzer, you need to modify the `mode` parameter in the `ga.yaml` file.
+
+```
+ AV-Fuzzer/carla_sim/parameters/ga.yaml
+ mode: avfuzzer
+```
+
+And then, run it by
+
+```bash
+python AV-Fuzzer/carla_sim/GA.py
+```
+
+
+
+For Random, as described above
+
+```
+ AV-Fuzzer/carla_sim/parameters/ga.yaml
+ mode: random
+```
+
+And then, run it by
+
+```
+python AV-Fuzzer/carla_sim/GA.py
+```
+
