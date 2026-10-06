@@ -31,7 +31,7 @@ Together with OBSpec and adaptive orchestration, OpenBehavior allows scenario ge
 
 ### Feature Comparison
 
-```{image} images/compare.jpg
+```{image} images/compare.png
 :width: 500px
 :alt: Comparison Table
 ```
