@@ -1,6 +1,6 @@
 # OBSpec: Syntax and Semantics
 
-OBSpec (OpenBehavior Specification) is a specification language for expressing both **Behavioral Objectives** (`behaviorObjective`) and **Safety Oracles** (`safetyOracle`). It extends Signal Temporal Logic (STL) with behavior-oriented statistical and maneuver operators for autonomous driving scenario analysis.
+OBSpec (OpenBehavior Specification) is a specification language for expressing both **Behavior Objectives** (`behaviorObjective`) and **Safety Oracles** (`safetyOracle`). It extends Signal Temporal Logic (STL) with behavior-oriented statistical and maneuver operators for autonomous driving scenario analysis.
 
 ---
 
