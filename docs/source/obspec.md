@@ -32,11 +32,11 @@ These functions characterize continuous signals over the complete execution trac
 ### B. Maneuver Functions
 These functions quantify maneuver dynamics over the complete execution trace.
 
-* **Count (Rising Edge):** $\lbrack\lbrack \texttt{count}(p) \rbrack\rbrack_\pi^{I_\pi} = \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t \wedge \neg p^\pi_{t-1})$, with $p^\pi_{-1} = \text{False}$
+* **Count (Rising Edge):** `count(p)` $= \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t \wedge \neg p^\pi_{t-1})$, with $p^\pi_{-1} = \text{False}$
 
-* **Switch Count (Total Transitions):** $\lbrack\lbrack \texttt{switch\_count}(p) \rbrack\rbrack_\pi^{I_\pi} = \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t \neq p^\pi_{t-1})$
+* **Switch Count (Total Transitions):** `switch_count(p)` $= \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t \neq p^\pi_{t-1})$
 
-* **Duration:** $\lbrack\lbrack \texttt{duration}(p) \rbrack\rbrack_\pi^{I_\pi} = \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t) \cdot \Delta t$, with sampling interval $\Delta t$
+* **Duration:** `duration(p)` $= \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t) \cdot \Delta t$, with sampling interval $\Delta t$
 
 ### C. Spatial Functions
 For agents or spatial points $A$ and $B$, `dist` is evaluated at time step $t$.
