@@ -21,30 +21,29 @@ Statistical and maneuver functions are evaluated over the complete trace $I_\pi$
 ### A. Statistical Functions
 These functions characterize continuous signals over the complete execution trace.
 
-* **Average:** $\llbracket \texttt{avg}(s) \rrbracket_\pi^{I_\pi} = \frac{1}{|I_\pi|} \sum_{t \in I_\pi} s^\pi_t$
+* **Average:** $\lbrack\lbrack \texttt{avg}(s) \rbrack\rbrack_\pi^{I_\pi} = \frac{1}{|I_\pi|} \sum_{t \in I_\pi} s^\pi_t$
 
-* **Standard Deviation:** $\llbracket \texttt{std}(s) \rrbracket_\pi^{I_\pi} = \sqrt{\frac{1}{|I_\pi|} \sum_{t \in I_\pi} (s^\pi_t - \mu)^2}$, where $\mu = \llbracket \texttt{avg}(s) \rrbracket_\pi^{I_\pi}$
+* **Standard Deviation:** $\lbrack\lbrack \texttt{std}(s) \rbrack\rbrack_\pi^{I_\pi} = \sqrt{\frac{1}{|I_\pi|} \sum_{t \in I_\pi} (s^\pi_t - \mu)^2}$, where $\mu = \lbrack\lbrack \texttt{avg}(s) \rbrack\rbrack_\pi^{I_\pi}$
 
-* **Maximum:** $\llbracket \texttt{max}(s) \rrbracket_\pi^{I_\pi} = \max_{t \in I_\pi} s^\pi_t$
+* **Maximum:** $\lbrack\lbrack \texttt{max}(s) \rbrack\rbrack_\pi^{I_\pi} = \max_{t \in I_\pi} s^\pi_t$
 
-* **Minimum:** $\llbracket \texttt{min}(s) \rrbracket_\pi^{I_\pi} = \min_{t \in I_\pi} s^\pi_t$
+* **Minimum:** $\lbrack\lbrack \texttt{min}(s) \rbrack\rbrack_\pi^{I_\pi} = \min_{t \in I_\pi} s^\pi_t$
 
 ### B. Maneuver Functions
 These functions quantify maneuver dynamics over the complete execution trace.
 
-* **Count (Rising Edge):** $\llbracket \texttt{count}(p) \rrbracket_\pi^{I_\pi} = \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t \wedge \neg p^\pi_{t-1})$, with $p^\pi_{-1} = \text{False}$
+* **Count (Rising Edge):** $\lbrack\lbrack \texttt{count}(p) \rbrack\rbrack_\pi^{I_\pi} = \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t \wedge \neg p^\pi_{t-1})$, with $p^\pi_{-1} = \text{False}$
 
-* **Switch Count (Total Transitions):** $\llbracket \texttt{switch\_count}(p) \rrbracket_\pi^{I_\pi} = \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t \neq p^\pi_{t-1})$
+* **Switch Count (Total Transitions):** $\lbrack\lbrack \texttt{switch\_count}(p) \rbrack\rbrack_\pi^{I_\pi} = \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t \neq p^\pi_{t-1})$
 
-* **Duration:** $\llbracket \texttt{duration}(p) \rrbracket_\pi^{I_\pi} = \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t) \cdot \Delta t$, with sampling interval $\Delta t$
+* **Duration:** $\lbrack\lbrack \texttt{duration}(p) \rbrack\rbrack_\pi^{I_\pi} = \sum_{t \in I_\pi} \mathbb{I}(p^\pi_t) \cdot \Delta t$, with sampling interval $\Delta t$
 
 ### C. Spatial Functions
 For agents or spatial points $A$ and $B$, `dist` is evaluated at time step $t$.
 
-* **Agent-to-agent distance:** $\llbracket \texttt{dist}(A,B) \rrbracket_\pi^t = \min_{x \in B_A,\; y \in B_B} \|x-y\|_2$, where $B_A$ and $B_B$ denote the occupied regions of the two agents.
+* **Agent-to-agent distance:** $\lbrack\lbrack \texttt{dist}(A,B) \rbrack\rbrack_\pi^t = \min_{x \in B_A,\; y \in B_B} \|x-y\|_2$, where $B_A$ and $B_B$ denote the occupied regions of the two agents.
 
-* **Otherwise:** $\llbracket \texttt{dist}(A,B) \rrbracket_\pi^t = \|\text{pos}(A,\theta_t)-\text{pos}(B,\theta_t)\|_2$, where `pos` gives an agent's reference position or a spatial point's coordinates.
-
+* **Otherwise:** $\lbrack\lbrack \texttt{dist}(A,B) \rbrack\rbrack_\pi^t = \|\text{pos}(A,\theta_t)-\text{pos}(B,\theta_t)\|_2$, where `pos` gives an agent's reference position or a spatial point's coordinates.
 ---
 
 ## 3. Quantitative Semantics (Robustness)
