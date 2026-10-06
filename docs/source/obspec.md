@@ -52,9 +52,9 @@ The robustness function $\rho(\varphi, \pi, t)$ provides a numerical measure of 
 ### Atomic Constraints
 For an atomic constraint $\mu \equiv (f > c)$:
 
-* If $f$ is a statistical or maneuver function, $\rho(\mu,\pi,t) = \llbracket f \rrbracket_\pi^{I_\pi} - c$.
+* If $f$ is a statistical or maneuver function, $\rho(\mu,\pi,t) = \lbrack\lbrack f \rbrack\rbrack_\pi^{I_\pi} - c$.
 
-* If $f$ is a spatial function, $\rho(\mu,\pi,t) = \llbracket f \rrbracket_\pi^t - c$.
+* If $f$ is a spatial function, $\rho(\mu,\pi,t) = \lbrack\lbrack f \rbrack\rbrack_\pi^t - c$.
 
 Thus, statistical and maneuver constraints are trace-level properties evaluated over the complete execution trace, whereas spatial constraints are evaluated at individual time steps.
 
